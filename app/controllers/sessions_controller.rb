@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   # after_action :set_origin_path
 
+
   def create
+    binding.pry
     auth_hash = request.env["omniauth.auth"]
     binding.pry
     User.get_user_from_omniauth(auth_hash)
