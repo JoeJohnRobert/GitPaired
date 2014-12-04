@@ -13,7 +13,7 @@
     <ul class="nav-list text-center effect">
       <li><%= link_to "ABOUT", about_path()%></li>
       <li><%= link_to "CONTACT", contact_path()%></li>
-    <% if current_user %>
+    <% if logged_in? %>
       <li><%= link_to "YOUR PROFILE", user_path(current_user) %></li>
       <li><%= link_to "LOGGED IN AS #{current_user.first_name}", "#" %></li>
       <li><%= link_to 'LOG OUT', logout_path %></li>
