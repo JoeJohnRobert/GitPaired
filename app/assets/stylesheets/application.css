@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+/*@font-face {
+  font-family: "Track";
+  src: url("/assets/Track.ttf") format("truetype")
+}
+
+h1, h2, h3 {
+  color: #337ab7;
+  font-family: "Track";
+  text-align: center;
+}
+
+img {
+  padding-left: 270px;
+}*/

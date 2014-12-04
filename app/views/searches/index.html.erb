@@ -4,7 +4,7 @@
   <h1><%= link_to(user.first_name, user_path(user)) %></h1>
   <%= link_to user_path(user) do %>
 
-    <%= image_tag(user.image_path, width:'700', height:'580')%>
+    <%#= image_tag(user.image_path, width:'700', height:'580')%>
   <% end %>
   <h2>Projects</h2>
   <% user.projects.each do |project| %>

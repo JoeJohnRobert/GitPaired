@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   resources :users, :only => [:show, :index] do 
     resources :projects, :only => [:new, :create]
   end  
 
   resources :searches, :only => [:index], :path => "s"
+  get 'login/' => 'sessions#new'
+  get 'auth/github/callback' => 'sessions#create'
+  get 'logout/' => 'sessions#destroy'
 
   root 'home#index'
 
