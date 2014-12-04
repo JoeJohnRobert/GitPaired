@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204181044) do
+ActiveRecord::Schema.define(version: 20141204193541) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20141204181044) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "archive_url"
+    t.datetime "pushed_at"
+    t.string   "language"
+    t.integer  "watchers_count"
+    t.string   "tags_url"
+    t.string   "contributors_url"
+    t.string   "collaborators_url"
   end
 
   create_table "tags", force: true do |t|
@@ -44,7 +51,6 @@ ActiveRecord::Schema.define(version: 20141204181044) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "uid"
-    t.datetime "blog"
     t.string   "gh_url"
     t.string   "gh_username"
     t.string   "repos_url"

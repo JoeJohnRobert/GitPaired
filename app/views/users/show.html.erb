@@ -1,1 +1,24 @@
-User show
+<h1> <%= @full_name %></h1>
+
+<div class="profile-pic">
+    <p><%= link_to image_tag(@user.image_path), @user.gh_url, class: 'profile-image' %></p>
+</div>
+
+Location: <%= @user.location %> <br>
+Email: <%= @user.email %>
+<br>
+
+<div class="user-projects">
+  Projects: <br>
+  <ol>
+  <% @user.projects.each do |project| %>
+      <li> <%= link_to project.name, project.archive_url %> :
+        <% if project.collaborator_wanted %>
+        This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.
+        <%else%>
+        Project Closed
+        <%end%>
+      </li>
+  <%end%>
+  </ol>
+</div>
