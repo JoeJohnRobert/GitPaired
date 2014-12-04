@@ -26,6 +26,24 @@ class User < ActiveRecord::Base
       )
   end
 
+  def create_or_update_projects(repos)
+    repos.each do |repo|
+      unless self.projects.find_by(:name => repo[:name])
+        self.projects.create(:name => repo[:name])
+      end
+      self.projects.find_by(:name => repo[:name]).update(
+        :name => repo['name'],
+        :archive_url => repo['archive_url'],
+        :pushed_at => repo['pushed_at'],
+        :language => repo['language'],
+        :watchers_count => repo['watchers_count'],
+        :tags_url => repo['tags_url'],
+        :contributors_url => repo['contributors_url'],
+        :collaborators_url => repo['collaborators_url']
+      )
+    end
+  end
+
   def self.find_with_omniauth(auth_hash)
     find_by(:uid => auth_hash[:uid])
   end

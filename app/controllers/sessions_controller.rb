@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
 
 
   def create
-    binding.pry
     auth_hash = request.env["omniauth.auth"]
-    binding.pry
-    User.get_user_from_omniauth(auth_hash)
+    @user = User.get_user_from_omniauth(auth_hash)
+    repos = Github.repos.list(user: "#{@user.gh_username}")
+    @user.create_or_update_projects(repos)
     redirect_to root_path
   end
 
