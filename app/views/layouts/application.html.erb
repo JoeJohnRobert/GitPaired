@@ -8,7 +8,28 @@
 </head>
 <body>
 
-<h1><%= link_to('GIT//PAIRED', root_path()) %></h1>
+<div class='container-fluid'>
+  <div class='menu-wrapper'>
+    <ul class="nav-list text-center effect">
+      <li><%= link_to "ABOUT", about_path()%></li>
+      <li><%= link_to "CONTACT", contact_path()%></li>
+    <% if current_user %>
+      <li><%= link_to "YOUR PROFILE", user_path(current_user) %></li>
+      <li><%= link_to "LOGGED IN AS #{current_user.first_name}", "#" %></li>
+      <li><%= link_to 'LOG OUT', logout_path %></li>
+    <% else %>
+      <li><%= link_to "SIGN UP", "/auth/github" %></li>
+      <li><%= link_to "LOG IN", "/auth/github" %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <%= link_to 'GIT//PAIRED', root_path(),:class => 'logo' %>
+</div>
+<br>
+
 ========================================================
 
 <%= yield %>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'login/' => 'sessions#new'
   get 'auth/github/callback' => 'sessions#create'
   get 'logout/' => 'sessions#destroy'
+  get '/contact' => 'home#contact'
+  get '/about' => 'home#about'
 
   root 'home#index'
 
