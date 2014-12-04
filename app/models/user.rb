@@ -1,3 +1,5 @@
+
+require "geocoder"
 class User < ActiveRecord::Base
   has_many :projects
   has_many :languages, through: :projects
@@ -28,6 +30,11 @@ class User < ActiveRecord::Base
 
   def self.find_with_omniauth(auth_hash)
     find_by(:uid => auth_hash[:uid])
+  end
+
+  def get_neighborhood
+    zipcode = self.location
+    Geocoder.search(zipcode).first.data["address_components"][1]["long_name"]
   end
 
 end
