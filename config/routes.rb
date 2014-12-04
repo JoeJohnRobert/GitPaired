@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  get 'project/new'
+  resources :users, :only => [:show, :index] do 
+    resources :projects, :only => [:new, :create]
+  end  
 
-  get 'project/create'
+  resources :searches, :only => [:index]
 
-  get 'user/show'
-
-  get 'user/index'
-
-  get 'user/new'
-
-  get 'user/create'
+  # get 'search' => 'searches#create', as: :search
+    
+  root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
