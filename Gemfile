@@ -39,6 +39,7 @@ gem 'github_api'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
