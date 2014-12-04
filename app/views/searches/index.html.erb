@@ -1,11 +1,24 @@
-<% @users.each do |u| %>
-  <h1><a href="<%= user_path(u.id) %>"><%= u.name %></a></h1>
+<h4><%= @users.size %> developer(s) found near zip code <%= @query %>.</h4>
+
+<% @users.each do |user| %>
+  <h1><%= link_to(user.first_name, user_path(user)) %></h1>
+  <%= link_to user_path(user) do %>
+
+    <%= image_tag(user.image_path, width:'700', height:'580')%>
+  <% end %>
   <h2>Projects</h2>
-  <% u.projects.each do |p| %>
-    <h3><%= p.name %></h3>
-    <% p.languages.each do |l| %>
-    <h5>Written in: <%= l.name %></h5>
+  <% user.projects.each do |project| %>
+
+    <h3><%= project.name %></h3>
+    <p>Last commit: x days ago.</p>
+    <% project.languages.each do |language| %>
+    <h5>Written in: <%= language.name %></h5>
 
     <% end %>
   <% end %>
 <% end %>
+
+
+<!-- TO DOs -->
+<!-- Get image to flip over to show project details -->
+<!-- Create a grid of images that resize for mobile friendly view -->

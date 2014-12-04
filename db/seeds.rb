@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u1 = User.create(:first_name => 'Mitch', :last_name => 'Boyer', :location => '10004')
-u2 = User.create(:first_name => 'Jessica', :last_name => 'Rose',  :location => '11211')
-u3 = User.create(:first_name => 'Grace', :last_name => 'Hopper', :location => '11238')
+u1 = User.create(:first_name => 'Mitch', :last_name => 'Boyer', :location => '10004', :image_path => 'mitch.jpg')
+u2 = User.create(:first_name => 'Jessica', :last_name => 'Rose',  :location => '11211', :image_path => 'jessica.jpg')
+u3 = User.create(:first_name => 'Grace', :last_name => 'Hopper', :location => '11238', :image_path => 'grace.jpg')
 
 p1 = u1.projects.create(:name => 'Spotify', :collaborator_wanted => true)
 p2 = u1.projects.create(:name => 'Facebook', :collaborator_wanted => false)

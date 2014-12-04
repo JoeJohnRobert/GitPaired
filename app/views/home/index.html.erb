@@ -1,4 +1,13 @@
+<h3>Find Github projects you might be interested in joining</h3>
+
+<br>
+<h4>Pair programming works best in person.</h4>
+<h4>Find Projects Near You!</h4>
+
+
 <%= form_tag searches_path, :method => 'get' do %>
+  <%= notice %>
   <p><%= text_field_tag :query, params[:query], :placeholder => "Enter your zip code"  %></p>
   <%= submit_tag "Git Paired" %>
 <% end %>
+
