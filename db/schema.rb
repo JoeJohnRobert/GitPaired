@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141204202148) do
 
+
   create_table "languages", force: true do |t|
     t.string   "name"
     t.integer  "project_id"

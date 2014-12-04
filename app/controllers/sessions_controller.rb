@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+# class SessionsController < ApplicationController
   # after_action :set_origin_path
 
 

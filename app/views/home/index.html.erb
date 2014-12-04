@@ -1,12 +1,12 @@
 <h3>Pair up with local developers to collaborate on projects that fit your interests</h3>
 
 <br>
+<wrapper class='text-center'>
 <h4>Find Projects Near You!</h4>
-
 
 <%= form_tag searches_path, :method => 'get' do %>
   <%= notice %>
   <p><%= text_field_tag :query, params[:query], :placeholder => "Enter your zip code"  %></p>
   <%= submit_tag "Git Paired" %>
 <% end %>
-
+</wrapper>

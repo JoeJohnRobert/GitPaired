@@ -40,6 +40,11 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
 
+gem 'bootstrap-sass'
+
+gem 'geocoder'
+
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
