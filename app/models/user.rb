@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
       end
       self.projects.find_by(:name => repo[:name]).update(
         :name => repo['name'],
-        :archive_url => repo['archive_url'],
+        :archive_url => repo['archive_url'].gsub("/{archive_format}{/ref}", "").gsub("api.", "").gsub("repos/", ""),
         :pushed_at => repo['pushed_at'],
         :language => repo['language'],
         :watchers_count => repo['watchers_count'],
