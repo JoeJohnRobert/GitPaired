@@ -3,10 +3,8 @@ Rails.application.routes.draw do
     resources :projects, :only => [:new, :create]
   end  
 
-  resources :searches, :only => [:index]
+  resources :searches, :only => [:index], :path => "s"
 
-  # get 'search' => 'searches#create', as: :search
-    
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
