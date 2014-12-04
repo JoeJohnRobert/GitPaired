@@ -1,19 +1,21 @@
 class SessionsController < ApplicationController
   after_action :set_origin_path
 
-  def new
+  # def new
 
-  end
+  # end
 
   def create
-    # binding.pry
+    binding.pry
     auth_hash = request.env["omniauth.auth"]
     User.get_user_from_omniauth(auth_hash)
     redirect_to session[:origin_path]
   end
 
   def destroy
-  end
+    reset_session
+    redirect_to root_path
+  end  
 
 
   private
