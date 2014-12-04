@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204161104) do
+ActiveRecord::Schema.define(version: 20141204181044) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -41,9 +41,18 @@ ActiveRecord::Schema.define(version: 20141204161104) do
     t.string   "email"
     t.string   "location"
     t.string   "image_path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "uid"
+    t.datetime "blog"
+    t.string   "gh_url"
+    t.string   "gh_username"
+    t.string   "repos_url"
+    t.integer  "public_repos"
+    t.integer  "following"
+    t.integer  "followers"
+    t.datetime "gh_created_at"
+    t.datetime "blog_url"
   end
 
 end
