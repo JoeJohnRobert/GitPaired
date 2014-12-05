@@ -2,34 +2,60 @@
 <div class="page-loader-gif"></div>
 </div>
 
-<h3>Pair up with local developers to collaborate on projects that fit your interests</h3>
 
-<br>
-<wrapper class='text-center'>
 
-<% if !current_user || current_user.location %>
-  <div class="search-zipcode">
-    <h4>Find Projects Near You!</h4>
-  <%= form_tag searches_path, :method => 'get' do %>
-    <%= notice %>
-    <p><%= text_field_tag :query, params[:query], :placeholder => "Enter your zip code" %></p>
-    <%= submit_tag "Git Paired" %>
 
-  <% end %>
-  </div>
 
-<% elsif current_user && !current_user.location %>
-  <div class="location-popup">
-    <h4>Enter your zipcode to complete registration!</h4>
-    <%= form_tag("/users/#{current_user.id}", method: "patch") do %>
-      <%= text_field_tag :location, params[:location], placeholder: "Enter your zip code" %>
-      <%= submit_tag "Git Paired" %>
-    <%end%>
-  </div>
-<% end %>
+<section id="twitter" class="add-padding bg-color1">
+  <h3 style='color:white'>Find & Collaborate with Local Devs</h3>
+    
+        <wrapper class='text-center'>
+          <% if !current_user || current_user.location %>
+            <h1 class='big-text'>Find Projects Near You!</h1>
+          <%= form_tag searches_path, :method => 'get' do %>
+            <%= notice %>
+            <%= text_field_tag :query, params[:query], :placeholder => "Enter Your Zip Code" %>
+            <%= submit_tag "Git Paired" %>
 
-</wrapper>
-<br><br><br>
+          <% end %>
+          
+
+          <% elsif current_user && !current_user.location %>
+
+            
+              <h1 class='big-text' style='color:white'>Enter Your Zip Code</h1>
+                
+                <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>
+                  <%= text_field_tag :location, params[:location], placeholder: "Enter your zip code" %>
+                  <%= submit_tag "Git Paired" %>
+                <%end%>
+
+          <% end %>
+        </wrapper>              
+
+      
+    
+
+
+  <form id="contact-form" class="col-sm-2 centered col-md-offset-4 scrollimation fade-left d3 in" action="" method="" novalidate="" _lpchecked="1" > 
+            
+    <div class="form-group">
+      <label class="control-label" for="contact-name">Zipcode</label>
+      <div class=""> <!-- was class='controls'  -->
+      <input id="" name="zipcode" placeholder="Enter your zipcode" class="form-control requiredField" data-new-placeholder="Enter your zipcode" type="text" data-error-empty="Please enter your zipcode">
+      
+      </div>
+    </div><!-- End zipcode input -->
+
+    
+    <p><button name="submit" type="submit" class="btn btn-color2 btn-block" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Message Sent"><i class="fa fa-paper-plane"></i>Git Paired!</button></p>
+    <input type="hidden" name="submitted" id="submitted" value="true">
+    
+  </form>
+
+  <br><br>
+</section>
+
 <!-- ==================  MAP   ================== -->
 <section id="map">    
   <div id="gmap"></div>
