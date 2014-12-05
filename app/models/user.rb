@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def get_neighborhood
-    zipcode = self.location
+    zipcode = self.location 
     Geocoder.search(zipcode).first.data["address_components"][1]["long_name"]
   end
 
