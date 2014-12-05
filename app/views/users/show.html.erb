@@ -17,24 +17,32 @@ Location: <%= @neighborhood %>
   <% @user.sort_projects_by_push.reverse.each do |project| %>
     <% if project.recent? && current_user == @user %>
       <li> <%= link_to project.name, project.archive_url %> :
-        <%= form_tag("/users/#{current_user.id}/projects/#{project.id}", method: "patch", remote: true) do %>
-          <% if project.collaborator_wanted %>
-            <%= hidden_field_tag :collaborator_wanted, false %>
-            <%= submit_tag 'Open For Help' %>
-            <i class="fa fa-star"></i>
-          <% else %>
-            <%= hidden_field_tag :collaborator_wanted, true %>
-            <%= submit_tag 'No Help Needed' %>
-            <i class="fa fa-star"></i>
+
+        <%= form_for project, url: user_project_path(@user.id, project.id) do |f| %>
+          Collab wanted?<% if project.collaborator_wanted %>
+            <%= f.hidden_field :collaborator_wanted, :value => false %>
+            <%= f.button '<i class="fa fa-user user-color"></i>'.html_safe %>
+          <% else %>  
+            <%= f.hidden_field :collaborator_wanted, :value => true %>
+            <%= f.button '<i class="fa fa-user"></i>'.html_safe %>
           <% end %>
-            
+
+
+        <%#= form_tag("/users/#{current_user.id}/projects/#{project.id}", method: "patch", remote: true) do %>
+          <%# if project.collaborator_wanted %>
+            <%#= hidden_field_tag :collaborator_wanted, false %>
+            <%#= submit_tag 'No help?' %>
+          <%# else %>  
+            <%#= hidden_field_tag :collaborator_wanted, true %>
+            <%#= submit_tag 'Want help?' %>
+          <%# end %>  
 
         <% end %>
-        <% if project.collaborator_wanted %>
-        <div class="collabs_wanted"> This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.</div>
-        <% else %>
-        <div class="collabs_not_wanted">Project Closed</div>
-        <% end %>
+        <%# if project.collaborator_wanted %>
+        <!-- <div class="collabs_wanted"> This Project Needs Collaborators! Get in touch with <%#= @user.first_name %> at the email above for more info.</div> -->
+        <%# else %>
+        <!-- <div class="collabs_not_wanted">Project Closed</div> -->
+        <%# end %>
       </li>
     <% end %>  
   <% end %>
