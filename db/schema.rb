@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204193541) do
+ActiveRecord::Schema.define(version: 20141204202148) do
+
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -22,10 +23,10 @@ ActiveRecord::Schema.define(version: 20141204193541) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
-    t.boolean  "collaborator_wanted"
+    t.boolean  "collaborator_wanted", default: false
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "archive_url"
     t.datetime "pushed_at"
     t.string   "language"
