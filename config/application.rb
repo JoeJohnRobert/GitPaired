@@ -23,11 +23,17 @@ module PairProgramming
     # For not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.precompile += %w( glyphicons-halflings-regular.eot )
-    config.assets.precompile += %w( glyphicons-halflings-regular.woff )
-    config.assets.precompile += %w( glyphicons-halflings-regular.ttf )
-    config.assets.precompile += %w( glyphicons-halflings-regular.svg )
+    # config.assets.precompile += %w( glyphicons-halflings-regular.eot )
+    # config.assets.precompile += %w( glyphicons-halflings-regular.woff )
+    # config.assets.precompile += %w( glyphicons-halflings-regular.ttf )
+    # config.assets.precompile += %w( glyphicons-halflings-regular.svg )
+    # config.assets.precompile += %w( fontawesome-webfont.eot )
+    # config.assets.precompile += %w( fontawesome-webfont.woff )
+    # config.assets.precompile += %w( fontawesome-webfont.ttf )
+    # config.assets.precompile += %w( fontawesome-webfont.svg )
 
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
   end
 end

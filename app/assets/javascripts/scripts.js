@@ -8,7 +8,6 @@ $(document).ready(function() {
 		$('#page-loader').fadeOut(500,function(){
 			loadGmap();
 		});
-		
 	})	
 	
 	/*============================================

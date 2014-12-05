@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<script>
+  var mapPoint = {
+    'lat': 40.705313,
+    'lng': -74.013911,
+    'zoom' : 15,
+    'icon': 'assets/images/pin-dark.png'
+  };  
+</script>
