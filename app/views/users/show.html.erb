@@ -5,9 +5,11 @@
 </div>
 
 Location: <%= @neighborhood %> 
-<% if @user.email.size > 0 %>  
-  <br>
-  Email: <%= @user.email %>
+<% if @user.email %>
+  <% if @user.email.size > 0 %>  
+    <br>
+    Email: <%= @user.email %>
+  <% end %>
 <% end %>
 <br>
 
