@@ -1,22 +1,27 @@
 <h4><%= @users.size %> developer(s) found near zip code <%= @query %>.</h4>
 
 <% @users.each do |user| %>
-  
+
+<div class="col-md-4">
+  <h3><%= link_to(user.first_name, user_path(user)) %></h3>
   <%= link_to user_path(user) do %>
-    <%= image_tag(user.image_path, width:'500', height:'500')%>
+
+    <%= image_tag(user.image_path, width:'100', height:'auto')%>
+    <%= user.get_neighborhood %>
+
   <% end %>
-  <h2>Projects</h2>
+  <h3>Projects</h3>
   <% user.projects.each do |project| %>
+    <% if project.recent? %>
+    <p><%= project.name %></p>
 
-    <h3><%= project.name %></h3>
-    <p>Last commit: x days ago.</p>
     <% project.languages.each do |language| %>
-    <h5>Written in: <%= language.name %></h5>
-
+    <p>Written in: <%= language.name %><p>
+      <%end%>
     <% end %>
   <% end %>
 <% end %>
-
+<div>
 
 <!-- TO DOs -->
 <!-- Get image to flip over to show project details -->
