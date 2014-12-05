@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
       unless self.projects.find_by(:name => repo[:name])
         self.projects.create(:name => repo[:name])
       end
+      # binding.pry
       self.projects.find_by(:name => repo[:name]).update(
         :name => repo['name'],
         :archive_url => repo['archive_url'].gsub("/{archive_format}{/ref}", "").gsub("api.", "").gsub("repos/", ""),
