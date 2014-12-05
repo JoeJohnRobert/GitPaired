@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  resources :users, :only => [:show, :index] do 
-    resources :projects, :only => [:new, :create]
+  resources :users, :only => [:show, :index, :update] do 
+    resources :projects, :only => [:new, :create, :update]
   end  
 
   resources :searches, :only => [:index], :path => "s"

@@ -6,22 +6,35 @@
 
 <br>
 <wrapper class='text-center'>
-<h4>Find Projects Near You!</h4>
 
-<%= form_tag searches_path, :method => 'get' do %>
-  <%= notice %>
-  <p><%= text_field_tag :query, params[:query], :placeholder => "Enter your zip code"  %></p>
-  <%= submit_tag "Git Paired" %>
+<% if !current_user || current_user.location %>
+  <div class="search-zipcode">
+    <h4>Find Projects Near You!</h4>
+  <%= form_tag searches_path, :method => 'get' do %>
+    <%= notice %>
+    <p><%= text_field_tag :query, params[:query], :placeholder => "Enter your zip code" %></p>
+    <%= submit_tag "Git Paired" %>
+
+  <% end %>
+  </div>
+
+<% elsif current_user && !current_user.location %>
+  <div class="location-popup">
+    <h4>Enter your zipcode to complete registration!</h4>
+    <%= form_tag("/users/#{current_user.id}", method: "patch") do %>
+      <%= text_field_tag :location, params[:location], placeholder: "Enter your zip code" %>
+      <%= submit_tag "Git Paired" %>
+    <%end%>
+  </div>
 <% end %>
+
 </wrapper>
 <br><br><br>
-
-
 <!-- ==================  MAP   ================== -->
-
 <section id="map">    
   <div id="gmap"></div>
 </section>  
+
 
 
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>

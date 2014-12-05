@@ -5,13 +5,9 @@
 </div>
 
 Location: <%= @neighborhood %> 
-
-<% if @user.email %>
-  <% if @user.email.size > 0 %>  
-    <br>
-    Email: <%= @user.email %>
-  <% end %>
-
+<% if @user.email.size > 0 %>  
+  <br>
+  Email: <%= @user.email %>
 <% end %>
 <br>
 
@@ -21,6 +17,12 @@ Location: <%= @neighborhood %>
   <% @user.sort_projects_by_push.reverse.each do |project| %>
     <% if project.recent? %>
       <li> <%= link_to project.name, project.archive_url %> :
+        <%= form_tag("/users/#{current_user.id}/projects/#{project.id}", method: "patch") do %>
+            <%= label_tag :collaborator_wanted do %>Collaborators wanted?
+              <%= check_box_tag :collaborator_wanted %>
+              <%= submit_tag 'Submit' %>
+            <% end %>
+        <% end %>
         <% if project.collaborator_wanted %>
         This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.
         <% else %>
