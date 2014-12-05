@@ -20,7 +20,7 @@
 /* ------------------------------ fonts -------------------------- */
 @font-face {
   font-family: "Track";
-  src:font-url("Track.ttf") format("truetype")
+  src: url("/assets/Track.ttf") format("truetype")
 }
 h1, h2, h3 {
   color: #337ab7;
