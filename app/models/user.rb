@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       :followers => auth_hash[:extra][:raw_info][:followers],
       :following => auth_hash[:extra][:raw_info][:following],
       :gh_created_at => auth_hash[:extra][:raw_info][:created_at]
-      )
+    )
   end
 
   def create_or_update_projects(repos)

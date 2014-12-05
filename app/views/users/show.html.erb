@@ -12,13 +12,15 @@ Email: <%= @user.email %>
   Projects: <br>
   <ol>
   <% @user.projects.each do |project| %>
+    <% if project.recent? %>
       <li> <%= link_to project.name, project.archive_url %> :
         <% if project.collaborator_wanted %>
         This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.
-        <%else%>
+        <% else %>
         Project Closed
-        <%end%>
+        <% end %>
       </li>
-  <%end%>
+    <% end %>  
+  <% end %>
   </ol>
 </div>
