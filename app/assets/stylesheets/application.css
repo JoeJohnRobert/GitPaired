@@ -15,7 +15,10 @@
  *= require_self
  */
 
-
+.user-color{
+  color: blue;
+  
+}
 
 /* ------------------------------ fonts -------------------------- */
 @font-face {
