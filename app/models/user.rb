@@ -54,4 +54,8 @@ class User < ActiveRecord::Base
     Geocoder.search(zipcode).first.data["address_components"][1]["long_name"]
   end
 
+  def sort_projects_by_push
+    self.projects.sort_by{|proj| proj.pushed_at}
+  end
+
 end

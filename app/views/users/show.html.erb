@@ -11,7 +11,7 @@ Email: <%= @user.email %>
 <div class="user-projects">
   Projects: <br>
   <ol>
-  <% @user.projects.each do |project| %>
+  <% @user.sort_projects_by_push.reverse.each do |project| %>
     <% if project.recent? %>
       <li> <%= link_to project.name, project.archive_url %> :
         <% if project.collaborator_wanted %>
