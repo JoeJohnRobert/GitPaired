@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       :followers => auth_hash[:extra][:raw_info][:followers],
       :following => auth_hash[:extra][:raw_info][:following],
       :gh_created_at => auth_hash[:extra][:raw_info][:created_at]
-      )
+    )
   end
 
   def create_or_update_projects(repos)
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
       end
       self.projects.find_by(:name => repo[:name]).update(
         :name => repo['name'],
-        :archive_url => repo['archive_url'],
+        :archive_url => repo['archive_url'].gsub("/{archive_format}{/ref}", "").gsub("api.", "").gsub("repos/", ""),
         :pushed_at => repo['pushed_at'],
         :language => repo['language'],
         :watchers_count => repo['watchers_count'],
@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
   def get_neighborhood
     zipcode = self.location 
     Geocoder.search(zipcode).first.data["address_components"][1]["long_name"]
+  end
+
+  def sort_projects_by_push
+    self.projects.sort_by{|proj| proj.pushed_at}
   end
 
 end

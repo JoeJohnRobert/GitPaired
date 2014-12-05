@@ -4,21 +4,26 @@
     <p><%= link_to image_tag(@user.image_path), @user.gh_url, class: 'profile-image' %></p>
 </div>
 
-Location: <%= @neighborhood if @neighborhood %> <br>
-Email: <%= @user.email %>
+Location: <%= @neighborhood %> 
+<% if @user.email.size > 0 %>  
+  <br>
+  Email: <%= @user.email %>
+<% end %>
 <br>
 
 <div class="user-projects">
   Projects: <br>
   <ol>
-  <% @user.projects.each do |project| %>
+  <% @user.sort_projects_by_push.reverse.each do |project| %>
+    <% if project.recent? %>
       <li> <%= link_to project.name, project.archive_url %> :
         <% if project.collaborator_wanted %>
         This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.
-        <%else%>
+        <% else %>
         Project Closed
-        <%end%>
+        <% end %>
       </li>
-  <%end%>
+    <% end %>  
+  <% end %>
   </ol>
 </div>
