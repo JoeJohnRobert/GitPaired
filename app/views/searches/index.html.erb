@@ -1,7 +1,7 @@
 <h4><%= @users.size %> developer(s) found near zip code <%= @query %>.</h4>
 
 <% @users.each do |user| %>
-
+<div class="col-md-4">
   <h3><%= link_to(user.first_name, user_path(user)) %></h3>
   <%= link_to user_path(user) do %>
 
@@ -19,7 +19,7 @@
     <% end %>
   <% end %>
 <% end %>
-
+<div>
 
 <!-- TO DOs -->
 <!-- Get image to flip over to show project details -->
