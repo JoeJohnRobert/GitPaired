@@ -7,4 +7,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user= User.find(params[:id])
+    @user.update(location: params[:location])
+    redirect_to root_path
+  end
+
 end
