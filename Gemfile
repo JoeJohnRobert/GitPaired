@@ -39,9 +39,7 @@ gem 'github_api'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
-
 gem 'bootstrap-sass'
-
 gem 'geocoder'
 
 

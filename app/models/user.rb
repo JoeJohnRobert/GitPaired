@@ -1,11 +1,43 @@
-
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base 
   has_many :projects
   has_many :languages, through: :projects
   has_many :tags, through: :projects
+  geocoded_by :zipcode
+  after_validation :geocode
+  attr_reader :proximity
 
+# FOR GEOCODER
+  def self.select_nearby_users(current_user, location, distance)
+    coordinates = Geocoder.coordinates(location)
+    lat, lng = coordinates
+    @users_nearby = User.near([lat, lng], distance) # sets arr of users near queried zipcode
+    @users_nearby = @users_nearby.select { |u| u.id != current_user.id } # eliminates current user
+    @users_nearby.each {|u| u.proximity= (u.set_proximity_to(coordinates))}
+    @users_nearby = @users_nearby.sort_by {|u| u.proximity}
+  end
+
+  def proximity= (distance)
+    @proximity = distance
+  end
+
+  def set_proximity_to(coordinates)
+    if self.geocoded?
+      self.distance_from(coordinates)
+    end
+  end
+  
+  def get_neighborhood
+    Geocoder.search(self.zipcode).first.data["address_components"][1]["long_name"]
+  end
+
+
+# FOR OMNIAUTH
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
+  end
+
+  def self.find_with_omniauth(auth_hash)
+    find_by(:uid => auth_hash[:uid])
   end
 
   def self.create_with_omniauth(auth_hash)
@@ -44,15 +76,6 @@ class User < ActiveRecord::Base
         :collaborators_url => repo['collaborators_url']
       )
     end
-  end
-
-  def self.find_with_omniauth(auth_hash)
-    find_by(:uid => auth_hash[:uid])
-  end
-
-  def get_neighborhood
-    zipcode = self.location 
-    Geocoder.search(zipcode).first.data["address_components"][1]["long_name"]
   end
 
   def sort_projects_by_push

@@ -1,3 +1,21 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h4.searched-user {
+  text-align: left;
+  float: left;
+  color: #509B9E;
+  font-size: 30px;
+}
+h5.distance {
+  text-align: right;
+  float: left;
+  color: #334959;
+  font-size: 16px;
+}
+
+h4.local-count {
+  font-size: 16px;
+}

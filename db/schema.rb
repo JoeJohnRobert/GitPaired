@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204202148) do
+ActiveRecord::Schema.define(version: 20141206172005) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20141204202148) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "location"
+    t.string   "zipcode"
     t.string   "image_path"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20141204202148) do
     t.integer  "followers"
     t.datetime "gh_created_at"
     t.datetime "blog_url"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

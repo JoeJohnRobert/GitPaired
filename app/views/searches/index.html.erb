@@ -1,11 +1,19 @@
-<h4><%= @users.size %> developer(s) found near zip code <%= @query %>.</h4>
+<wrapper
+
+  <% if @users.size > 1%>
+    <h4 class='local-count'><%= @users.size %> developers in your area.<%= @query %>.</h4>
+  <% elsif @users.size == 1 %>
+    <h4 class='local-count'><%= @users.size %> developer in your area.<%= @query %>.</h4>
+  <% end %>
+  <br>
 
 <% @users.each do |user| %>
 
-<div class="col-md-4">
-  <h3><%= link_to(user.first_name, user_path(user)) %></h3>
+  
+  <h4 class='searched-user'><%= link_to(user.first_name, user_path(user)) %></h4>
+  <h5 class='distance'> (~<%= user.proximity.round(1) %> miles)</h5> 
+  
   <%= link_to user_path(user) do %>
-
     <%= image_tag(user.image_path, width:'100', height:'auto')%>
     <%= user.get_neighborhood %>
 
@@ -21,7 +29,7 @@
     <% end %>
   <% end %>
 <% end %>
-<div>
+
 
 <!-- TO DOs -->
 <!-- Get image to flip over to show project details -->
