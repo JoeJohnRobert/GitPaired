@@ -15,7 +15,10 @@
  *= require_self
  */
 
-
+.user-color{
+  color: blue;
+  
+}
 
 /* ------------------------------ fonts -------------------------- */
 @font-face {
@@ -693,4 +696,8 @@ li.span4 {
 .mt-info .btn{
   margin-left: 2px;
   margin-bottom: 30px;
+}
+
+.blue {
+  color: blue;
 }

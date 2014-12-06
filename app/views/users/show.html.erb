@@ -1,43 +1,35 @@
 <h1> <%= @full_name %></h1>
 
 <div class="profile-pic">
-    <p><%= link_to image_tag(@user.image_path), @user.gh_url, class: 'profile-image' %></p>
+   <p><%= link_to image_tag(@user.image_path), @user.gh_url, class: 'profile-image' %></p>
 </div>
 
 Location: <%= @neighborhood %> 
 <% if @user.email.size > 0 %>  
-  <br>
-  Email: <%= @user.email %>
+ <br>
+ Email: <%= @user.email %>
 <% end %>
 <br>
 
 <div class="user-projects">
-  Projects: <br>
-  <ol>
-  <% @user.sort_projects_by_push.reverse.each do |project| %>
-    <% if project.recent? && current_user == @user %>
+ Projects: <br>
+ <ol>
+ <% @user.sort_projects_by_push.reverse.each do |project| %>
+   <% if project.recent? %>
       <li> <%= link_to project.name, project.archive_url %> :
-        <%= form_tag("/users/#{current_user.id}/projects/#{project.id}", method: "patch", remote: true) do %>
-          <% if project.collaborator_wanted %>
-            <%= hidden_field_tag :collaborator_wanted, false %>
-            <%= submit_tag 'Open For Help' %>
-            <i class="fa fa-star"></i>
-          <% else %>
-            <%= hidden_field_tag :collaborator_wanted, true %>
-            <%= submit_tag 'No Help Needed' %>
-            <i class="fa fa-star"></i>
-          <% end %>
-            
-
-        <% end %>
-        <% if project.collaborator_wanted %>
-        <div class="collabs_wanted"> This Project Needs Collaborators! Get in touch with <%= @user.first_name %> at the email above for more info.</div>
+      <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+        <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
+        <% if project.collaborator_wanted %>  
+          <%= f.button '<i class="fa fa-user blue"></i>'.html_safe %>        
         <% else %>
-        <div class="collabs_not_wanted">Project Closed</div>
+          <%= f.button '<i class="fa fa-user"></i>'.html_safe %>
         <% end %>
-      </li>
-    <% end %>  
-  <% end %>
-  </ol>
-
+      <%end%>
+    </li>
+    <%end%>
+  <%end%>
+ </ol>
 </div>
+
+
+

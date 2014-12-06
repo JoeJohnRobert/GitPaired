@@ -11,4 +11,15 @@ class Project < ActiveRecord::Base
     end
 
   end 
+
+
+
+  # def heart_class(user)
+  #   if user_liked?(user)
+  #     "glyphicon glyphicon-heart red-heart"
+  #   else
+  #     "glyphicon glyphicon-heart grey-heart"
+  #   end
+  # end
+
 end
