@@ -25,24 +25,37 @@
   font-family: "Track";
   src: url("/assets/Track.ttf") format("truetype")
 }
-h1, h2, h3 {
-  color: #337ab7;
+h1 .logo {
+  color: #509B9E;
   font-family: "Track";
   text-align: center;
 }
+h1, h2, h3, h4 {
+  color: #FFF;
+  font-family: "Track";
+}
+h4 {
+  font-size: 20px;
+}
 
 a {
-  color: #45B099;
-  text-decoration: none;
-  font-weight: 400;
+  color: #509B9E;
 }
+
 a:hover { 
-  color: #45B099;
-  text-decoration: underline;
+  color: #52CCBA;
 }
+
 .color {
   background-color: #67C4B0;
 }
+.search-bar {
+  color: #334959;
+  font-family: "Track";
+  font-size: 18px;
+}
+
+
 
 /* ------------------------------ misc -------------------------- */
 

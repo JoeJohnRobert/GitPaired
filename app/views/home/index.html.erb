@@ -3,57 +3,65 @@
 </div>
 
 
-
-
-
-<section id="twitter" class="add-padding bg-color1">
-  <h3 style='color:white'>Find & Collaborate with Local Devs</h3>
-    
-        <wrapper class='text-center'>
-          <% if !current_user || current_user.location %>
-            <h1 class='big-text' style='color:white'>Find Projects Near You!</h1>
-          <%= form_tag searches_path, :method => 'get' do %>
-            <%= notice %>
-            <%= text_field_tag :query, params[:query], :placeholder => "Enter Your Zip Code" %>
-            <%= submit_tag "Git Paired" %>
-
-          <% end %>
-          
-
-          <% elsif current_user && !current_user.location %>
-
-            
-              <h1 class='big-text' style='color:white'>Enter Your Zip Code</h1>
-                
-                <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>
-                  <%= text_field_tag :location, params[:location], placeholder: "Enter Your Zip Code" %>
-                  <%= submit_tag "Git Paired" %>
-                <%end%>
-
-          <% end %>
-        </wrapper>              
-
-      
-    
-
-
-  <form id="contact-form" class="col-sm-2 centered scrollimation fade-left d3 in" action="" method="" novalidate="" _lpchecked="1" > 
-            
-    <div class="form-group">
-      <label class="control-label" for="contact-name">Zipcode</label>
-      <div class=""> <!-- was class='controls'  -->
-      <input id="" name="zipcode" placeholder="Enter your zipcode" class="form-control requiredField" data-new-placeholder="Enter your zipcode" type="text" data-error-empty="Please enter your zipcode">
-      
-      </div>
-    </div><!-- End zipcode input -->
-
-    
-    <p><button name="submit" type="submit" class="btn btn-color2 btn-block" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Message Sent"><i class="fa fa-paper-plane"></i>Git Paired!</button></p>
-    <input type="hidden" name="submitted" id="submitted" value="true">
-    
-  </form>
-
+<section id="twitter" class="bg-color1">
   <br><br>
+  <wrapper class='text-center'>
+    <h3>Find & Collaborate with Local Devs</h3>      
+    <h1 class='big-text' style='color:white'>Find Projects Near You!</h1>
+
+      <% if !current_user || current_user.location %>
+        
+        <%= form_tag searches_path, :method => 'get' do %>
+          <%= notice %>
+          <%= text_field_tag :query, params[:query], :placeholder => "Enter a Zip Code" %>
+          <%= submit_tag "Git Paired" %>
+
+        <% end %>
+
+      <% elsif current_user && !current_user.location %>
+        <form id="contact-form" class="col-sm-2 centered scrollimation fade-left d3 in" > 
+            
+          <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>        
+
+            <input id="" name="zipcode" placeholder="Enter your zipcode" class="form-control" data-new-placeholder="Enter your zipcode" type="text" data-error-empty="Please enter your zipcode">      
+            <%= text_field_tag :location, params[:location], placeholder: "Enter a Zip Code", :class=>'form-group search-bar' %>
+
+            <%= submit_tag "Submit", :class => "btn btn-color2 btn-block" %>
+          <% end %>
+
+        </form>
+
+      <% end %>
+
+      <!-- THIS DOESNT SHOW WHEN I MOVE IT TO ELSE STATEMENT -->
+      <br>
+      <h4 style='text-center'>Set Your Home Location to Get Started</h4>   
+      <form id="contact-form" class="text-center col-sm-2 centered scrollimation fade-left d3 in" > 
+        
+        <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>        
+
+          <!-- Below is an input template --> 
+            <input id="" name="zipcode" placeholder="Enter your zipcode" class="form-control" data-new-placeholder="Enter your zipcode" type="text" data-error-empty="Please enter your zipcode">      
+          <!-- Above is template -->
+
+          <%= text_field_tag :location, params[:location], placeholder: "Enter a Zip Code", :class=>'form-group search-bar' %>
+
+          <%= submit_tag "Git Paired!", :class => "btn btn-color2 btn-block" %>
+        <% end %>
+
+      </form>
+
+
+  </wrapper>  
+              <!-- ORIGINAL ELSE STATEMENT -->
+      <!-- <h1 class='big-text' style='color:white'>Enter Your Zip Code</h1> -->
+        <%#= form_tag("/users/#{current_user.id}", method: "patch" ) do %>
+          <%#= text_field_tag :location, params[:location], placeholder: "Enter Your Zip Code" %>
+          <%#= submit_tag "Git Paired", :class => "btn btn-color2 btn-block" %>
+        <%# end %>
+      
+
+  <br><br><br><br><br><br><br><br>
 </section>
 
 <!-- ==================  MAP   ================== -->

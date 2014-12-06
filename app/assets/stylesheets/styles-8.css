@@ -116,10 +116,11 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 
 .btn-color1,
 .btn-color2{
-    padding: 10px 30px;
+    padding: 12px 30px;
     color:#fff;
     font-size: 21px;
     font-weight: 300;
+    font-family: "Track";
     background:#52CCBA;
     outline: none !important;
     border-radius: 0;
@@ -147,6 +148,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 .btn-color2 .fa{
     margin-right: 15px;
 }
+
 
 /*-----------------------
 ---- Preloader Styles ----
