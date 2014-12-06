@@ -406,3 +406,8 @@ a.close-menu:hover {
 .blue {
   color: blue;
 }
+
+
+img {
+  z-index: 1;
+}
