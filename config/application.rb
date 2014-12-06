@@ -31,7 +31,7 @@ module PairProgramming
     # config.assets.precompile += %w( fontawesome-webfont.woff )
     # config.assets.precompile += %w( fontawesome-webfont.ttf )
     # config.assets.precompile += %w( fontawesome-webfont.svg )
-
+    config.serve_static_assets = true
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
