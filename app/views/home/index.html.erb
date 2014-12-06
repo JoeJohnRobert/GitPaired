@@ -11,7 +11,7 @@
     
         <wrapper class='text-center'>
           <% if !current_user || current_user.location %>
-            <h1 class='big-text'>Find Projects Near You!</h1>
+            <h1 class='big-text' style='color:white'>Find Projects Near You!</h1>
           <%= form_tag searches_path, :method => 'get' do %>
             <%= notice %>
             <%= text_field_tag :query, params[:query], :placeholder => "Enter Your Zip Code" %>
@@ -26,7 +26,7 @@
               <h1 class='big-text' style='color:white'>Enter Your Zip Code</h1>
                 
                 <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>
-                  <%= text_field_tag :location, params[:location], placeholder: "Enter your zip code" %>
+                  <%= text_field_tag :location, params[:location], placeholder: "Enter Your Zip Code" %>
                   <%= submit_tag "Git Paired" %>
                 <%end%>
 
@@ -37,7 +37,7 @@
     
 
 
-  <form id="contact-form" class="col-sm-2 centered col-md-offset-4 scrollimation fade-left d3 in" action="" method="" novalidate="" _lpchecked="1" > 
+  <form id="contact-form" class="col-sm-2 centered scrollimation fade-left d3 in" action="" method="" novalidate="" _lpchecked="1" > 
             
     <div class="form-group">
       <label class="control-label" for="contact-name">Zipcode</label>
