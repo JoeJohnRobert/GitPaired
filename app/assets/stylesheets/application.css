@@ -701,3 +701,8 @@ li.span4 {
 .blue {
   color: blue;
 }
+
+
+img {
+  z-index: 1;
+}

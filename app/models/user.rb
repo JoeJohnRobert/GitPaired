@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
     self.projects.sort_by{|proj| proj.pushed_at}
   end
 
+  def collab_wanted
+    self.projects.map{|proj| proj.collaborator_wanted}
+  end
+
 end
