@@ -2,7 +2,9 @@ class SearchesController < ApplicationController
 
   def index
     @query = params[:query]
-    @users = User.where(:location => @query)
+    @radius = 2 #measured in miles
+    @users = User.select_nearby_users(current_user, @query, @radius)
+  
     if @users.size > 0
       render :index
     elsif @query[(/\d{5}/)] == @query
@@ -11,13 +13,6 @@ class SearchesController < ApplicationController
       redirect_to root_path, notice: "No results"
     end
   end  
-
-  # def create
-  #   @query = params[:query]
-  #   @users = User.where(:location => @query)
-    
-  # end
-
 
 
 end

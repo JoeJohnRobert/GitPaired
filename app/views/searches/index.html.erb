@@ -1,11 +1,19 @@
-<h4><%= @users.size %> developer(s) found near zip code <%= @query %>.</h4>
+<wrapper
+
+  <% if @users.size > 1%>
+    <h4 class='local-count'><%= @users.size %> developers in your area.<%= @query %>.</h4>
+  <% elsif @users.size == 1 %>
+    <h4 class='local-count'><%= @users.size %> developer in your area.<%= @query %>.</h4>
+  <% end %>
+  <br>
 
 <% @users.each do |user| %>
 
-<div class="col-md-4">
-  <h3><%= link_to(user.first_name, user_path(user)) %></h3>
+  
+  <h4 class='searched-user'><%= link_to(user.first_name, user_path(user)) %></h4>
+  <h5 class='distance'> (~<%= user.proximity.round(1) %> miles)</h5> 
+  
   <%= link_to user_path(user) do %>
-
     <%= image_tag(user.image_path, width:'100', height:'auto')%>
     <%= user.get_neighborhood %>
 
@@ -21,7 +29,45 @@
     <% end %>
   <% end %>
 <% end %>
-<div>
+
+<!--==== Portfolio Filters ====-->
+<div id="filter-works">
+  <ul>
+    <li class="active scrollimation fade-right d1">
+        <a href="#" data-filter="*">All</a>
+    </li>
+    <li class="scrollimation fade-right">
+        <a href="#" data-filter=".identity">Identity</a>
+    </li>
+    <li class="scrollimation fade-left">
+        <a href="#" data-filter=".logo">Logo</a>
+    </li>
+    <li class="scrollimation fade-left d1">
+        <a href="#" data-filter=".illustration">Illustration</a>
+    </li>
+  </ul>
+</div><!--End portfolio filters -->
+
+<!-- ==============================================
+SINGLE PROJECT ITEM
+=============================================== -->    
+<article class="project-item web-design">
+    
+    <img class="img-responsive project-image" src="assets/placeholder-320x210.jpg" alt=""><!--Project thumb -->
+    
+    <div class="hover-mask">
+        <h2 class="project-title">Project Title</h2><!--Project Title -->
+        <p>Subtitle</p><!--Project Subtitle -->
+    </div>
+    
+    ...
+    
+</article>
+<!-- ==============================================
+END PROJECT ITEM
+=============================================== -->
+
+
 
 <!-- TO DOs -->
 <!-- Get image to flip over to show project details -->

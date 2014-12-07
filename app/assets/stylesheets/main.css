@@ -2651,6 +2651,7 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
+  
 }
 
 .fade {
