@@ -16,14 +16,15 @@
     </div>
       
 
-      <% if current_user && !current_user.zipcode %>
+      <% if current_user && (!current_user.zipcode || current_user.email.length < 1) %>
         <br>
-        <h3 class='homepage'>Input Your Home Zipcode</h3>
+        <h3 class='homepage'>Input Your Home Zipcode & Email So Other Coders Know How to Get in Touch.</h3>
         <br>
          
         <div style='vertical-align'  class="text-center col-sm-2 centered center-form scrollimation fade-left d3 in"  > 
           <%= form_tag("/users/#{current_user.id}", method: "patch" ) do %>        
-            <%= text_field_tag :zipcode, params[:zipcode], placeholder: "Zip Code", :class=>'form-group search-bar' %>
+            <%= text_field_tag :zipcode, params[:zipcode], placeholder: "Zip Code", :class=>'form-group search-bar form-control' %>  
+            <%= email_field_tag :email, params[:email], placeholder: "awesomeperson@email.com", :class=>'form-group form-control' %>
             <%= submit_tag "Submit", :class => "btn btn-color2 btn-block" %>
           <% end %>
         </div>
