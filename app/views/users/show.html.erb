@@ -1,17 +1,19 @@
 <section id="about" class="add-padding bg-color3">
   <div class="container">
     <div class="row">
-      <!-- <div class="col-sm-6 scrollimation fade-right d1"> -->
+      <div class="col-sm-6 scrollimation fade-right d1 user-pic">
         <img class="img-responsive polaroid" src="<%= @user.image_path %>" alt="" />
-      <!-- </div>   -->
+      </div>  
         <!-- <p><%#= link_to image_tag(@user.image_path), @user.gh_url, class: 'img-responsive polaroid' %></p> -->
-      <!-- <div class="col-sm-6 scrollimation fade-left d3"> -->
+      <div class="col-sm-6 scrollimation fade-left d3">
         <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
 
         <h2>Located in <%= @neighborhood %></h2> 
-        <% if @user.email.size > 0 %>  
-         <br>
-        <h2>Email: <%= @user.email %></h2>
+        <% if @user.email %>
+          <% if @user.email.size > 0 %>  
+           <br>
+          <h2>Email: <%= @user.email %></h2>
+          <% end %>
         <% end %>
         <br>
         <ul>
@@ -43,7 +45,7 @@
         </ul>
 
 
-        <!-- </div> -->
+        </div>
         
         </div>
         
