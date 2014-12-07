@@ -3,6 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
+
   $('.proj-hover').hover(
   function() {
     // debugger;
@@ -13,14 +14,35 @@ $(document).ready(function() {
 );
  
 
+
+
+
+
+
+
+
+
+$('.project-details h3').siblings().hide();
+
+$('.project-details').hover(function(){
+
+  $(this).children('ul').show();
+}, function(){
+$(this).children('ul').hide();
+})
+
+
+
+
+
+
 });
 
 
-// $('i').hover(
-//   function() {
-//     debugger;
-//     $( 'button').append( $( "<span> Open this project for colllaboration!</span>" ) );
-//   }, function() {
-//     $( 'button' ).find( "span:last" ).remove();
-//   }
-// );
+
+
+
+
+
+
+
