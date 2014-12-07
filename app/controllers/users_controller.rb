@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    # raise params.inspect
     @user= User.find(params[:id])
-    @user.update(zipcode: params[:zipcode])
+    @user.update(zipcode: params[:zipcode], email: params[:email])
     redirect_to root_path
   end
 end
