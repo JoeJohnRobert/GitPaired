@@ -15,6 +15,7 @@
           <h2>Email: <%= @user.email %></h2>
           <% end %>
         <% end %>
+        <h2> Primary language: <%= @user.most_common_language %></h2>
         <br>
       
         <% if current_user && current_user.id == @user.id %>
