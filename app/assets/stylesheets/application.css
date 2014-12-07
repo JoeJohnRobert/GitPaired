@@ -33,7 +33,7 @@ a:hover {
   color: #52CCBA;
 }
 
-h1 .logo {
+h1.logo {
   color: #509B9E;
   font-family: "Track";
   text-align: center;
@@ -42,6 +42,10 @@ h1, h2, h3, h4, h5 {
   font-family: "Track";
 }
 
+h3.homepage {
+  text-align: center;
+  color: #334959;
+}
 
 .color {
   background-color: #67C4B0;

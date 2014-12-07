@@ -116,7 +116,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 
 .btn-color1,
 .btn-color2{
-    padding: 10px 30px;
+    padding-bottom: 1px;
+    padding-top: 8px;
     color:#fff;
     font-size: 21px;
     font-weight: 300;
