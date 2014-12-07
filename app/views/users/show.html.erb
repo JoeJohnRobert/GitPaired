@@ -9,9 +9,11 @@
         <h1 class='big-text'> <%= @full_name %></h1>
 
         <h2>Located in <%= @neighborhood %></h2> 
-        <% if @user.email.size > 0 %>  
-         <br>
-        <h2>Email: <%= @user.email %></h2>
+        <% if @user.email %>
+          <% if @user.email.size > 0 %>  
+           <br>
+          <h2>Email: <%= @user.email %></h2>
+          <% end %>
         <% end %>
         <br>
         <ul>
