@@ -17,7 +17,7 @@
         <% end %>
         <h2> Primary language: <%= @user.most_common_language %></h2>
         <br>
-        <ul>
+      
         <% if current_user && current_user.id == @user.id %>
         <h2>Your Projects</h2> 
         <!-- <p class="proj-hover">Open this project for collaboration</p> -->
@@ -39,17 +39,22 @@
 
         <% else %>
         <h2><%= @user.first_name %> is looking for collaboration on:</h2>
-        <ul>
+     
           <% @user.sort_projects_by_push.reverse.each do |project| %>
             <% if project.recent? && project.collaborator_wanted %>
+             <div class="project-details">
               <h3> <%= link_to project.name, project.archive_url %> </h3>
+              <ul>
+             
               <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
               <li> The source codes's primary language is <%=project.language%> </li>
+            </ul>
+              </div>
             <% end %>  
           <% end %>
-        </ul>
+
         <% end %>  
-        </ul>
+    
 
 
         </div>
