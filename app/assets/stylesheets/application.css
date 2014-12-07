@@ -16,7 +16,7 @@
  */
 
 .user-color{
-  color: blue;
+  color: #334959;
   
 }
 
@@ -50,8 +50,15 @@ h1, h2, h3, h4, h5 {
   color: #334959;
   font-family: "Track";
   font-size: 18px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
 }
-
 
 /* ------------------------------ misc -------------------------- */
 
@@ -403,11 +410,18 @@ a.close-menu:hover {
   margin-bottom: 30px;
 }
 
-.blue {
-  color: blue;
+.fa {
+  color: #AAA;
 }
+
+.selected {
+  color: #334959;
+}
+
 
 
 img {
   z-index: 1;
 }
+
+
