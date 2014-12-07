@@ -37,13 +37,16 @@
           <% end %>
 
         <% else %>
-        <h2><%= @user.first_name %> is looking for collaboration on:</h2> 
+        <h2><%= @user.first_name %> is looking for collaboration on:</h2>
+        <ul>
           <% @user.sort_projects_by_push.reverse.each do |project| %>
             <% if project.recent? && project.collaborator_wanted %>
               <h3> <%= link_to project.name, project.archive_url %> </h3>
+              <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
+              <li> The source codes's primary language is <%=project.language%> </li>
             <% end %>  
           <% end %>
-
+        </ul>
         <% end %>  
         </ul>
 
