@@ -86,4 +86,9 @@ class User < ActiveRecord::Base
     self.projects.map{|proj| proj.collaborator_wanted}
   end
 
+  def most_common_language
+    languages = self.projects.map {|proj| proj.language} - [nil]
+    languages.group_by {|lang| lang}.values.max_by(&:size).first
+  end
+
 end
