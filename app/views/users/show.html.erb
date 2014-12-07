@@ -12,7 +12,7 @@
         <% if @user.email %>
           <% if @user.email.size > 0 %>  
            <br>
-          <h2>Email: <%= @user.email %></h2>
+          <h2>Email: <a href=<%= "mailto:#{@user.email}?"%>><%= @user.email %></a></h2>
           <% end %>
         <% end %>
         <h2> Primary language: <%= @user.most_common_language %></h2>
