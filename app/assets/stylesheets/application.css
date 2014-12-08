@@ -66,6 +66,8 @@ h3.homepage {
   padding-top: 10px;
   padding-bottom: 5px;
   outline: none;
+  max-width: 100%;
+  min-width: 100%;
   border: none !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;

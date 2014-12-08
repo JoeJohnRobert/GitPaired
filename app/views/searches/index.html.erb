@@ -39,16 +39,14 @@ START PROJECTS ITEM
     <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
 
       <% @users.each do |user| %>
-
-          <article class="project-item JavaScript masonry-brick" style='float:left' >
+          <article class= "project-item <%= user.add_languages %> masonry-brick" style='float:left' >
             <%= link_to user_path(user) do %>          
               <img class="img-responsive project-image" src="<%= user.image_path %>"><!--Project thumb -->
               <div class="hover-mask">
                   <h2 class="project-title"><%= "#{user.first_name} #{user.last_name}" %></h2><!--Project Title -->          
-                  <p>(~<%= user.proximity.round(1) %> miles)</p><!--Project Subtitle -->
+                  <p class='distance-descriptor'>(~<%= user.proximity.round(1) %> miles)</p><!--Project Subtitle -->
               </div>
-            
-            <% end %>      
+            <% end %>     
           </article>
         <% end %>
       

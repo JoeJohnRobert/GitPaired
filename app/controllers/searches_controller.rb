@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   def index
     
     @query = params[:query]
-    @radius = 10 #measured in miles
+    @radius = 100 #measured in miles
     @users = User.select_nearby_users(current_user, @query, @radius)
     @users.each { |u| @projects = u.all_projects }
     @language_filters = @projects.map {|p| p.language}.uniq

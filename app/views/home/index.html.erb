@@ -90,7 +90,7 @@
 
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
-<% if current_user %>
+<% if current_user && current_user.zipcode %>
   <script>
     var lat = $("h1.big-text").data('latitude')
     var lng = $("h1.big-text").data('longitude')
