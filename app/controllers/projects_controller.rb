@@ -15,8 +15,8 @@ class ProjectsController < ApplicationController
     end
 
     if params[:project][:description]
-    # binding.pry
-      @project.update(description: params[:project][:description])
+   
+      @project.update(description: params[:project][:description], need_help_with: params[:project][:need_help_with])
     end
 
   end

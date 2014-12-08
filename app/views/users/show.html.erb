@@ -25,7 +25,7 @@
          <div class='proj-hover'> 
             <% if project.recent? %>
               <h3> <%= link_to project.name, project.archive_url %></h3>
-              
+
                   <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
                     <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
                     <% if project.collaborator_wanted %> 
@@ -34,10 +34,18 @@
                     <h3 data-id='<%= project.id %>' class="button-collab"> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
                     <% end %>
                   <% end %>
-                  
+                  <% if project.description %>
+                  Description:
                   <div class= "description" data-id='<%= project.id %>'>
-  <p><%= project.description %></p>
+  <%= project.description %>
                   </div>
+                  <%end %>
+                  <% if project.need_help_with %>
+                  Looking for:
+              <div class= "need_help_with" data-id='<%= project.id %>'>
+  <%= project.need_help_with %>
+                  </div>
+                  <%end%>
                   <a href="#" class="btn btn-sm btn-success"
    data-toggle="modal"
    data-target="#basicModal-<%= project.id %>" >Edit project description</a>
@@ -54,6 +62,8 @@
                               <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
                             Please give a brief decription of your project below:
                             <%= f.text_field :description, class: 'form-control' %>
+                            Describe what your looking for in a collaborator on this project:
+                            <%= f.text_field :need_help_with, class: 'form-control' %>
                             <span class="help-block"></span>
                           </div>
 
@@ -82,7 +92,8 @@
              
               <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
               <li> The source codes's primary language is <%=project.language%> </li>
-
+              <li> <%= @user.name %> is looking for someone that fits the following description to help with their project:
+                <%= project.need_help_with %> </li>
             </ul>
               </div>
             <% end %>  
