@@ -9,7 +9,7 @@
     <div class='homepage'>
       <h3>Find & Collaborate with Local Devs</h3>      
       <% if current_user %>
-        <h1 class='big-text' data-latitude='<%= current_user.latitude %>' data-longitude='<%= current_user.longitude %>'>Find Projects Near You!</h1>
+        <h1 class='big-text' data-latitude='<%= current_user.latitude %>' data-longitude='<%= current_user.longitude %>' data-zip='<%= @user.zipcode %>'>Find Projects Near You!</h1>
       <% else %>
         <h1 class='big-text'>Find Projects Near You!</h1>
       <% end %>
@@ -84,10 +84,14 @@
   <script>
     var lat = $("h1.big-text").data('latitude')
     var lng = $("h1.big-text").data('longitude')
+    var zip = $("h1.big-text").data('zip')
     var mapPoint = {
       'lat': lat,
       'lng': lng,
       'zoom' : 15,
+      'infoText':'',
+      'linkText':'Here I am!',
+      'mapAddress': zip,
       'icon': '/assets/pin-dark.png'
     };  
   </script>
@@ -97,9 +101,9 @@
       'lat': 40.705313,
       'lng': -74.013911,
       'zoom' : 14,
-      'infoText':'<h5>Flatiron School Presents..</h5>',
+      'infoText':'<h5>Flatiron School</h5>',
       'linkText':'Come check us out!',
-            'mapAddress':'11 Broadway, New York, NY 10004',
+      'mapAddress':'11 Broadway, New York, NY 10004',
       'icon': '/assets/pin-dark.png'
     };  
   </script>
