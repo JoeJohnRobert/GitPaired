@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 var modal = $('.modal[aria-hidden=false]');
 $('.modal-btn').click(function(){
-  $(window).scrollTop(600);
+  $(window).scrollTop(800);
 })
 
 $('.project-details h3').siblings().hide();
