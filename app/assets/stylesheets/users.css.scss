@@ -37,7 +37,11 @@
 .yelp-image {
   height: 100px;
   width: 100px;
-  text-align: right;
+  margin-left: 18%;
+}
+
+.yelp-name{
+  /*margin-right: 20%;*/
 }
 
 
@@ -45,6 +49,15 @@
   margin-left: 50px;
 }
   
+.align-right {
+  margin-right: 20%;
+  width: 20%;
+}
+
+.align-left {
+  margin-left: 20%;
+  width: 20%;
+}
           
           
           

@@ -35,7 +35,7 @@ $('.email-button').hover(function(){
   // debugger;
 }, function(){
   $(this).parent().mouseleave(function() {
-    $('.yelp-info').hide();
+    // $('.yelp-info').hide();
   });
 })
 

@@ -17,8 +17,12 @@
             <div class='yelp-info btn btn-color2 btn-block'> 
               <h3>Nearby Cafes with Wifi</h3>
               <% @wifi_spots.each do |cafe| %>
-                <%= link_to cafe[0], cafe[2] %>
-                <img class="yelp-image" src="<%= cafe[3] %>" alt="" />
+                <div class='align left'>
+                  <%= link_to cafe[0], cafe[2], target: "_blank", class: "yelp-name" %>
+                </div>
+                <div class='align-right'>
+                  <img class="yelp-image" src="<%= cafe[3] %>"  />
+                </div>  
                 <br><br>  
               <% end %>
             </div>
