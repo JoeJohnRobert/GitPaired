@@ -138,25 +138,24 @@ START MAP
 
     var lat = $("h1.big-text").data('latitude')
     var lng = $("h1.big-text").data('longitude')
-    // var zip = ''
     var curr_user_lat = $("h1.big-text").data('currlat')
     var curr_user_lng = $("h1.big-text").data('currlng')
     var mapstyles = [ { "stylers": [ { "saturation": -100 } ] } ];
-    // var name = $("h1.big-text").data('user')
-    // var zip = $("h1.big-text").data('zip')
-    // var mapPoint = {
-    //   'lat': lat,
-    //   'lng': lng,
-    //   'infoText': '<h5>'+name+'</h5>',
-    //   'linkText':'Find me here!',
-    //   'mapAddress': zip,
-    //   'zoom' : 15,
-    //   'icon': '/assets/pin-dark.png'
-    // };
-
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
+    // var rendererOptions = {
+    //   suppressMarkers: true
+    // }
+    // var mapPoint = {
+    //     'lat': lat,
+    //     'lng': lng,
+    //     'infoText': '<h5>'+name+'</h5>',
+    //     'linkText':'Find me here!',
+    //     'mapAddress': zip,
+    //     'zoom' : 15,
+    //     'icon': '/assets/pin-dark.png'
+    //   };
 
     function initialize(lat, lng) {
       directionsDisplay = new google.maps.DirectionsRenderer();
@@ -185,6 +184,30 @@ START MAP
         }
       });
     }
+    // 
+    // var marker = new google.maps.Marker({
+    //   position: pointLatLng, 
+    //   map: map, 
+    //   title:mapPoint.linkText,
+    //   icon: mapPoint.icon
+    // });
+    
+    // var mapLink = 'https://www.google.com/maps/preview?ll='+mapPoint.lat+','+mapPoint.lng+'&z=14&q='+mapPoint.mapAddress;
+    
+    // var html = '<div class="infowin">'
+    //     + mapPoint.infoText
+    //     + '<a href="'+mapLink+'" target="_blank">'+mapPoint.linkText+'</a>'
+    //     + '</div>';
+
+    // google.maps.event.addListener(marker, 'mouseover', function() {
+    //   infoWindow.setContent(html);
+    //   infoWindow.open(map, marker);
+    // });
+
+    // google.maps.event.addListener(marker, 'click', function() {
+    //   window.open(mapLink,'_blank');
+    // });
+    // 
 
     google.maps.event.addDomListener(window, 'load', calcRoute(curr_user_lat, curr_user_lng, lat, lng));
 
