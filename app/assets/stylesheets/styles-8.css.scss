@@ -473,8 +473,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 -------------------------*/
 
 #portfolio{
-    padding-top:70px;
-    background:url('../images/bg-portfolio.jpg') no-repeat fixed;
+    padding-top:160px;
+    background:asset-url('bg-portfolio.jpg') no-repeat fixed;
     background-size:cover;
     color:#fff;
 }
@@ -625,7 +625,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 
 .project-item .hover-mask .project-title {
     color:#fff;
-    margin:90px 0 0;
+    margin-top:36%;
     padding:10px;
     font-size:26px;
     line-height:34px;
@@ -1246,7 +1246,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
     }
     
     .project-item .hover-mask .project-title {
-        margin-top:75px;
+        /*margin-top:75px;*/
     }
     
     #project-slider{

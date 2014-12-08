@@ -1,68 +1,66 @@
-<wrapper
-
-  <% if @users.size > 1%>
-    <h4 class='local-count'><%= @users.size %> developers in your area.<%= @query %>.</h4>
-  <% elsif @users.size == 1 %>
-    <h4 class='local-count'><%= @users.size %> developer in your area.<%= @query %>.</h4>
-  <% end %>
-  <br>
-
-<% @users.each do |user| %>
-
-  
-  <h4 class='searched-user'><%= link_to(user.first_name, user_path(user)) %></h4>
-  <h5 class='distance'> (~<%= user.proximity.round(1) %> miles)</h5> 
-  
-  <%= link_to user_path(user) do %>
-    <%= image_tag(user.image_path, width:'100', height:'auto')%>
-    <%= user.get_neighborhood %>
-
-  <% end %>
-  <h3>Projects</h3>
-  <% user.projects.each do |project| %>
-    <% if project.recent? %>
-    <p><%= project.name %></p>
-
-    <% project.languages.each do |language| %>
-    <p>Written in: <%= language.name %><p>
-      <%end%>
-    <% end %>
-  <% end %>
-<% end %>
 
 <!--==== Portfolio Filters ====-->
+<section id="portfolio" class="add-padding">
 <div id="filter-works">
   <ul>
     <li class="active scrollimation fade-right d1">
         <a href="#" data-filter="*">All</a>
     </li>
-    <li class="scrollimation fade-right">
-        <a href="#" data-filter=".identity">Identity</a>
-    </li>
-    <li class="scrollimation fade-left">
-        <a href="#" data-filter=".logo">Logo</a>
-    </li>
-    <li class="scrollimation fade-left d1">
-        <a href="#" data-filter=".illustration">Illustration</a>
-    </li>
+
+    <% @language_filters.each_with_index do |language, i| %>
+      <% if i%4 == 0 %>
+        <% @fade = @fade_options[1] %>
+      <% elsif i%4 == 1 %>  
+        <% @fade = @fade_options[2] %>
+      <% elsif i%4 == 2 %>
+        <% @fade = @fade_options[3] %>
+      <% elsif i%4 == 3 %>
+        <% @fade = @fade_options[0] %>
+      <% end %>
+
+      <li class= "scrollimation <%= @fade %>" >
+          <a href="#" data-filter=".<%= language %>"><%= language %></a>
+      </li>
+    <% end %>
   </ul>
-</div><!--End portfolio filters -->
+</div><!--End portfolio filters
 
 <!-- ==============================================
 SINGLE PROJECT ITEM
 =============================================== -->    
-<article class="project-item web-design">
-    
-    <img class="img-responsive project-image" src="assets/placeholder-320x210.jpg" alt=""><!--Project thumb -->
-    
-    <div class="hover-mask">
-        <h2 class="project-title">Project Title</h2><!--Project Title -->
-        <p>Subtitle</p><!--Project Subtitle -->
+
+  <div class="container masonry-wrapper masonry-images-margin">    
+    <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
+
+      <% @users.each do |user| %>
+
+          <article class="project-item JavaScript masonry-brick" style='float:left' >
+            <%= link_to user_path(user) do %>          
+              <img class="img-responsive project-image" src="<%= user.image_path %>"><!--Project thumb -->
+              <div class="hover-mask">
+                  <h2 class="project-title"><%= "#{user.first_name} #{user.last_name}" %></h2><!--Project Title -->          
+                  <p>(~<%= user.proximity.round(1) %> miles)</p><!--Project Subtitle -->
+              </div>
+            
+            <% end %>      
+          </article>
+        <% end %>
+      
+      
+
     </div>
-    
-    ...
-    
-</article>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
 <!-- ==============================================
 END PROJECT ITEM
 =============================================== -->
