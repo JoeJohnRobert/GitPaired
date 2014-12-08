@@ -68,6 +68,7 @@ class User < ActiveRecord::Base
       self.projects.find_by(:name => repo[:name]).update(
         :name => repo['name'],
         :archive_url => repo['archive_url'].gsub("/{archive_format}{/ref}", "").gsub("api.", "").gsub("repos/", ""),
+        :description => repo['description'],
         :pushed_at => repo['pushed_at'],
         :language => repo['language'],
         :watchers_count => repo['watchers_count'],
@@ -86,10 +87,16 @@ class User < ActiveRecord::Base
     self.projects.map{|proj| proj.collaborator_wanted}
   end
 
+
   def all_projects
     self.projects.select do |project|
       project.language && project.recent?
     end
+  end
+
+  def most_common_language
+    languages = self.projects.map {|proj| proj.language} - [nil]
+    languages.group_by {|lang| lang}.values.max_by(&:size).first
   end
 
 end
