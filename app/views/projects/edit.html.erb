@@ -1,8 +1,17 @@
-<div id="modal-edit-fields">
-    <%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>    <div class="control-group">
-        <%= f.label :customer_name, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.hidden_field :customer_id, :class => 'text_field', :id =>"cust_id" %>
-          <%= f.autocomplete_field :customer_name, autocomplete_customer_name_customers_path, :id_element => '#cust_id', :class => 'text_field ui-autocomplete-input' %>
-        </div>
-</div>
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

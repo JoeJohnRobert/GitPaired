@@ -358,4 +358,12 @@ img {
   z-index: 1;
 }
 
+.modal {
+  margin-top: 200px;
+}
+
+.modal-dialog {
+
+margin-top: 60vh;
+} 
 

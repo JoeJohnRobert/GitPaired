@@ -22,23 +22,53 @@
         <h2>Your Projects</h2> 
         <!-- <p class="proj-hover">Open this project for collaboration</p> -->
           <% @user.sort_projects_by_push.reverse.each do |project| %>
-        <div class='proj-hover'>  
+         <div class='proj-hover'> 
             <% if project.recent? %>
               <h3> <%= link_to project.name, project.archive_url %></h3>
+              
                   <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
                     <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
                     <% if project.collaborator_wanted %> 
-                    <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
+                    <h3 data-id='<%= project.id %>' class="button-collab"> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
                     <% else %>
-                    <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
+                    <h3 data-id='<%= project.id %>' class="button-collab"> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
                     <% end %>
-
                   <% end %>
-                  <%= link_to "edit", edit_user_project_path(@user, project), class: "btn btn-mini", remote: true %>
-                  <a data-toggle="modal" data-target="#myModal" data-remote="<%= edit_user_project_path(@user, project) %> " class="btn btn-mini">Weigh out</a>
+                  
+                  <div class= "description" data-id='<%= project.id %>'>
+  <p><%= project.description %></p>
+                  </div>
+                  <a href="#" class="btn btn-sm btn-success"
+   data-toggle="modal"
+   data-target="#basicModal-<%= project.id %>" >Edit project description</a>
+
+              <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                       
+                        <h4 class="modal-title" id="myModalLabel"><%=project.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+                            Please give a brief decription of your project below:
+                            <%= f.text_field :description, class: 'form-control' %>
+                            <span class="help-block"></span>
+                          </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <%= f.submit "Save Changes" %>
+                          <%end%>
+                        </div>
+                     </div>
+                  </div>
+                </div>
              
             <% end %>  
-        </div>  
+          </div>  
           <% end %>
 
         <% else %>
