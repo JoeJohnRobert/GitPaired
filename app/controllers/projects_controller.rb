@@ -13,6 +13,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def edit
+binding.pry
+  end
+
   private
     def project_params
       params.require(:project).permit(:user_id, :collaborator_wanted)

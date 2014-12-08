@@ -32,7 +32,11 @@
                     <% else %>
                     <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
                     <% end %>
+
                   <% end %>
+                  <%= link_to "edit", edit_user_project_path(@user, project), class: "btn btn-mini", remote: true %>
+                  <a data-toggle="modal" data-target="#myModal" data-remote="<%= edit_user_project_path(@user, project) %> " class="btn btn-mini">Weigh out</a>
+             
             <% end %>  
         </div>  
           <% end %>
@@ -48,6 +52,7 @@
              
               <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
               <li> The source codes's primary language is <%=project.language%> </li>
+
             </ul>
               </div>
             <% end %>  

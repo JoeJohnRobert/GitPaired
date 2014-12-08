@@ -1,0 +1,8 @@
+<div id="modal-edit-fields">
+    <%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>    <div class="control-group">
+        <%= f.label :customer_name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.hidden_field :customer_id, :class => 'text_field', :id =>"cust_id" %>
+          <%= f.autocomplete_field :customer_name, autocomplete_customer_name_customers_path, :id_element => '#cust_id', :class => 'text_field ui-autocomplete-input' %>
+        </div>
+</div>
