@@ -35,42 +35,16 @@
     </div>
   </div>
   <br><br><br>
-    
 
-<!-- ==============================================
-START PROJECTS ITEM
-=============================================== -->    
+<!-- ////////////MODAL/////// -->
 
-<div class="container masonry-wrapper masonry-images-margin">    
-  <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
-
-  <% @user.all_projects.each do |project| %>
-    <article class= "project-item" style='float:left' >
-      <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
-      <%= link_to project.archive_url do %>
-        <div class="hover-mask">
-          <h2 class="project-title project-tile-header"><%= project.name %></h2><!--Project Title -->
-          <div class='project-description'>
-            <p class='overview'>This is the decription. This is the decription. This is the decription. This is the decription. </p>
-            <h2 class='project-title project-description-header'>Written In:</h2>
-              <p class='project-languages'> Ruby, JavaScript, Python, SQL </p>
-            <h2 class='project-title project-description-header'>Need Help With:</h2>
-              <p class='need-help'>Ruby, JavaScript </p>
-          </div>
-        </div>
-      <% end %>
-      <% if current_user && current_user == @user %>
-        
-        <a href="#" data-toggle="modal" data-target="#basicModal-<%= project.id %>" >
-          <div class="hover-mask bottom-mask">
-            <h2 class='project-title project-description-footer'>Edit</h2>
-          </div>
-        </a>
-        <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-show">
+     <% @user.all_projects.each do |project| %>
+    <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel"><%=project.name %></h4>
+              <h4 class="modal-title" id="myModalLabel"><%= project.name %></h4>
               </div>
               <div class="modal-body">
                 <div class="form-group">
@@ -89,6 +63,38 @@ START PROJECTS ITEM
             </div>
           </div>
         </div>
+        <%end%>
+      </div>
+<!-- ==============================================
+START PROJECTS ITEM
+=============================================== -->    
+
+<div class="container masonry-wrapper masonry-images-margin">    
+  <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
+
+  <% @user.all_projects.each do |project| %>
+    <article class= "project-item" style='float:left' data-id='<%=project.id%>'>
+      <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+      <%= link_to project.archive_url do %>
+        <div class="hover-mask">
+          <h2 class="project-title project-tile-header"><%= project.name %></h2><!--Project Title -->
+          <div class='project-description'>
+            <p class='overview'><%=project.description%> </p>
+            <h2 class='project-title project-description-header'>Written In:</h2>
+              <p class='project-languages'> <%=project.language %> </p>
+            <h2 class='project-title project-description-header'>Need Help With:</h2>
+              <p class='need-help'><%=project.need_help_with%> </p>
+          </div>
+        </div>
+      <% end %>
+      <% if current_user && current_user == @user %>
+        
+        <a href="#" data-toggle="modal" data-target="#basicModal-<%= project.id %>" >
+          <div class="hover-mask bottom-mask">
+            <h2 class='project-title project-description-footer'>Edit</h2>
+          </div>
+        </a>
+        
 
       <% else %>
 

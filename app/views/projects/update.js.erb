@@ -7,5 +7,5 @@ $('h3[data-id=<%= @project.id %>]').find('.fa').toggleClass('selected');
 
 $('#basicModal-<%= @project.id %>').modal('hide')
 
-$('[data-id=<%= @project.id %>]').siblings('.description').text('<%= @project.description %>')
-$('[data-id=<%= @project.id %>]').siblings('.need_help_with').text('<%= @project.need_help_with %>')
+$('[data-id=<%= @project.id %>]').children('a').children('.hover-mask').first().find('.overview').text('<%= @project.description %>')
+$('[data-id=<%= @project.id %>]').children('a').children('.hover-mask').first().find('.need-help').text('<%= @project.need_help_with %>')
