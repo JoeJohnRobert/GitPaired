@@ -99,4 +99,9 @@ class User < ActiveRecord::Base
     languages.group_by {|lang| lang}.values.max_by(&:size).first
   end
 
+  def add_languages
+    projects = self.all_projects
+    languages = projects.collect {|p| p.language}.join(" ")
+  end
+
 end
