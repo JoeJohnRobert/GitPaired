@@ -340,6 +340,9 @@ img {
   max-width: 100%;
   min-width: 100%;
 }
+.project-language {
+  opacity: .85;
+}
 
 .img-rounded {
   border-radius: 6px;

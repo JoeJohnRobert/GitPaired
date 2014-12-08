@@ -64,16 +64,29 @@ START PROJECTS ITEM
 
     <% @user.all_projects.each do |project| %>
       <article class= "project-item" style='float:left' >
-        <%= link_to 'http://github.com' do %>
-          <row class='tile-header'>
-          </row>          
-          <img class="project-tile"><!--Project thumb -->
+        <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+        <%= link_to project.archive_url do %>
           <div class="hover-mask">
-            <h2 class="contact-owner"><%= "#{@user.first_name} #{@user.last_name}" %></h2><!--Project Title -->          
+            <h2 class="project-title project-tile-header"><%= project.name %></h2><!--Project Title -->
+            <div class='project-description'>
+              <p class='overview'>This is the decription. This is the decription. This is the decription. This is the decription. </p>
+              <h2 class='project-title project-description-header'>Written In:</h2>
+                <p class='project-languages'> Ruby, JavaScript, Python, SQL </p>
+              <h2 class='project-title project-description-header'>Need Help With:</h2>
+                <p class='need-help'>Ruby, JavaScript </p>
+            </div>
           </div>
-        <% end %>     
+        <% end %>
+        <a href="mailto:<%= @user.email %>?subject=Helping Out With <%= project.name %>">
+        <%#= link_to "mailto:#{@user.email}?" do %>
+          <div class="hover-mask bottom-mask">
+            <h2 class='project-title project-description-footer'>Get In Touch!</h2>
+          </div>
+        </a>
+        <%# end %>
       </article>
     <% end %>
+
     </div>
   </div>
 
