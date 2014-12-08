@@ -13,7 +13,7 @@
 //= require jquery
 //= require modernizr.min.js
 //= require respond.src.js
-//= require bootstrap.js
+
 //= require contact.js
 //= require jquery.backstretch.js
 //= require jquery.flexslider.js
@@ -24,7 +24,9 @@
 //= require jquery.masonry.js
 
 
+
 //= require jquery_ujs
 // require turbolinks
 //= require_tree .
+//= require bootstrap.js
 //= require users

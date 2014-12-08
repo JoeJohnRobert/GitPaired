@@ -366,10 +366,23 @@ a.close-menu:hover {
   color: #334959;
 }
 
-
-
 img {
   z-index: 1;
 }
+
+.modal {
+  margin-top: 200px;
+}
+
+.modal-dialog {
+
+margin-top: 65vh;
+} 
+
+
+
+
+
+
 
 

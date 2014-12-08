@@ -8,30 +8,91 @@
       <div class="col-sm-6 scrollimation fade-left d3">
         <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
         <h2>Located in <%= @neighborhood %></h2> 
+        <h2>Primary language: <%= @user.most_common_language %></h2>
         <% if @user.email %>
-          <% if @user.email.size > 0 %>  
-            <br><h2>Email: <a href=<%= "mailto:#{@user.email}?"%>><%= @user.email %></a></h2>
+          <% if @user.email.size > 0 %> 
+          <div class="get-in-touch-hover">
+          <%#= link_to("Get in touch!", "mailto:#{@user.email}?", class: "btn btn-color2 btn-block") %>
+            <a class="btn btn-color2 btn-block email-button" href=<%= "mailto:#{@user.email}?" %> target="_blank"><i class="fa fa-paper-plane" style="color: white;"></i>Get in Touch
+            </a>
+            <div class='yelp-info btn btn-color2 btn-block'> 
+              <h3>Nearby Cafes with Wifi</h3>
+              <% @wifi_spots.each do |cafe| %>
+                <%= link_to cafe[0], cafe[2] %>
+                <img class="yelp-image" src="<%= cafe[3] %>" alt="" />
+                <br><br>  
+              <% end %>
+            </div>
+          </div>
+
           <% end %>
         <% end %>
-        <h2> Primary language: <%= @user.most_common_language %></h2>
         <br>
       
         <% if current_user && current_user.id == @user.id %>
-          <h2>Your Projects</h2> 
-            <% @user.sort_projects_by_push.reverse.each do |project| %>
-            <div class='proj-hover'>  
+
+        <h2>Your Projects</h2> 
+        <!-- <p class="proj-hover">Open this project for collaboration</p> -->
+          <% @user.sort_projects_by_push.reverse.each do |project| %>
+         <div class='proj-hover'> 
             <% if project.recent? %>
               <h3> <%= link_to project.name, project.archive_url %></h3>
-              <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
-                <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
-                <% if project.collaborator_wanted %> 
-                  <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
-                <% else %>
-                  <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
-                <% end %>
-              <% end %>
+
+                  <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+                    <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
+                    <% if project.collaborator_wanted %> 
+                    <h3 data-id='<%= project.id %>' class="button-collab"> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
+                    <% else %>
+                    <h3 data-id='<%= project.id %>' class="button-collab"> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
+                    <% end %>
+                  <% end %>
+                  <% if project.description %>
+                  Description:
+                  <%end%>
+                  <div class= "description" data-id='<%= project.id %>'>
+  <%= project.description %>
+                  </div>
+             
+                  <% if project.need_help_with %>
+                  Looking for:
+                  <%end%>
+              <div class= "need_help_with" data-id='<%= project.id %>'>
+  <%= project.need_help_with %>
+                  </div>
+         
+                  <a href="#" class="btn btn-sm btn-success modal-btn" data-toggle="modal"
+   data-target="#basicModal-<%= project.id %>" >Edit project description</a>
+
+              <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                       
+                        <h4 class="modal-title" id="myModalLabel"><%=project.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+                            Please give a brief decription of your project below:
+                            <%= f.text_field :description, class: 'form-control' %>
+                            Describe what your looking for in a collaborator on this project:
+                            <%= f.text_field :need_help_with, class: 'form-control' %>
+                            <span class="help-block"></span>
+                          </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <%= f.submit "Save Changes", class: "btn btn-success"  %>
+                          <%end%>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+             
             <% end %>  
-            </div>  
+          </div>  
+
           <% end %>
 
         <% else %>
@@ -42,10 +103,14 @@
               <div class="project-details">
               <h3> <%= link_to project.name, project.archive_url %> </h3>
               <ul>
-                <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
-                <li> The source codes's primary language is <%=project.language%> </li>
-              </ul>
-                </div>
+
+             
+              <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
+              <li> The source codes's primary language is <%=project.language%> </li>
+              <li> <%= @user.name %> is looking for someone that fits the following description to help with their project:
+                <%= project.need_help_with %> </li>
+            </ul>
+              </div>
             <% end %>  
           <% end %>
         <% end %>  

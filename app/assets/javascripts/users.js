@@ -7,34 +7,39 @@ $(document).ready(function() {
   $('.proj-hover').hover(
   function() {
     // debugger;
-    $(this).find('button').append( $( "<span class='proj-hover'> Want a collaborator?</span>" ) );
+    $(this).find('.button-collab').find('button').append( $( "<span class='proj-hover'> Want a collaborator?</span>" ) );
   }, function() {
-    $(this).find('button').find( "span:last" ).remove();
+    $(this).find('.button-collab').find('button').find( "span:last" ).remove();
   }
 );
+
  
 
 
-
-
-
-
-
+var modal = $('.modal[aria-hidden=false]');
+$('.modal-btn').click(function(){
+  $(window).scrollTop(800);
+})
 
 
 $('.project-details h3').siblings().hide();
 
 $('.project-details').hover(function(){
-
   $(this).children('ul').show();
 }, function(){
-$(this).children('ul').hide();
+  $(this).children('ul').hide();
 })
 
+$('.yelp-info').hide();
 
-
-
-
+$('.email-button').hover(function(){
+  $(this).siblings('.yelp-info').show();
+  // debugger;
+}, function(){
+  $(this).parent().mouseleave(function() {
+    $('.yelp-info').hide();
+  });
+})
 
 });
 
