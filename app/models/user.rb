@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     coordinates = Geocoder.coordinates(location)
     lat, lng = coordinates
     @users_nearby = User.near([lat, lng], distance) # sets arr of users near queried zipcode
-    @users_nearby = @users_nearby.select { |u| u.id != current_user.id } # eliminates current user
+    @users_nearby = @users_nearby.select { |u| u.id != current_user.id } if current_user # eliminates current user
     @users_nearby.each {|u| u.proximity= (u.set_proximity_to(coordinates))}
     @users_nearby = @users_nearby.sort_by {|u| u.proximity}
   end
@@ -68,6 +68,7 @@ class User < ActiveRecord::Base
       self.projects.find_by(:name => repo[:name]).update(
         :name => repo['name'],
         :archive_url => repo['archive_url'].gsub("/{archive_format}{/ref}", "").gsub("api.", "").gsub("repos/", ""),
+        :description => repo['description'],
         :pushed_at => repo['pushed_at'],
         :language => repo['language'],
         :watchers_count => repo['watchers_count'],
@@ -84,6 +85,13 @@ class User < ActiveRecord::Base
 
   def collab_wanted
     self.projects.map{|proj| proj.collaborator_wanted}
+  end
+
+
+  def all_projects
+    self.projects.select do |project|
+      project.language && project.recent?
+    end
   end
 
   def most_common_language

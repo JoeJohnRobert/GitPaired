@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$('#page-loader').fadeOut(500,function(){
 			loadGmap();
 		});
+		
 	})	
 	
 	/*============================================
@@ -16,7 +17,7 @@ $(document).ready(function() {
 	
 	$('#home').height($(window).height()+50);
 	
-	// $.backstretch('assets/images/header-bg.jpg');
+	$.backstretch('assets/images/header-bg.jpg');
 	
 	$(window).scroll( function() {
 		var st = $(this).scrollTop(),

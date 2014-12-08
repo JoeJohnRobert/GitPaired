@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.move-header-down.in {
+  margin-top: 50px;
+}
 
 .square-profile-image {
   background-repeat: no-repeat;
@@ -24,4 +27,83 @@
 .center-form {
   margin-left: 41.66%;
   margin-right: 41.66%;
+}
+
+/* ------------------------------ contact -------------------------- */
+
+.col1 {
+  text-align: center;
+  float: left;
+  width: 16%;
+  position: relative;
+  left: 82%;
+  overflow: hidden;
+}
+
+.col2 {
+  text-align: center;
+  float: left;
+  width: 16%;
+  position: relative;
+  left: 86%;
+  overflow: hidden;
+}
+.col3 {
+  text-align: center;
+  text-align: center;
+  float: left;
+  width: 16%;
+  position: relative;
+  left: 90%;
+  overflow: hidden;
+}
+.col4 {
+  text-align: center;
+  float: left;
+  width: 16%;
+  position: relative;
+  left: 94%;
+  overflow: hidden;
+}
+.col5 {
+  text-align: center;
+  float: left;
+  width: 16%;
+  position: relative;
+  left: 98%;
+  overflow: hidden;
+}
+
+.container5 {
+  clear: left;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+}
+.container4 {
+  clear: left;
+  float: left;
+  width: 100%;
+  position: relative;
+  right: 20%;
+}
+.container3 {
+  clear: left;
+  float: left;
+  width: 100%;
+  position: relative;
+  right: 20%;
+}
+.container2 {
+  clear: left;
+  float: left;
+  width: 100%;
+  position: relative;
+  right: 20%;
+}
+.container1 {
+  float: left;
+  width: 100%;
+  position: relative;
+  right: 20%;
 }
