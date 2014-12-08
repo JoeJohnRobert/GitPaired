@@ -12,29 +12,25 @@ $(document).ready(function() {
     $(this).find('button').find( "span:last" ).remove();
   }
 );
- 
-
-
-
-
-
-
-
-
 
 $('.project-details h3').siblings().hide();
 
 $('.project-details').hover(function(){
-
   $(this).children('ul').show();
 }, function(){
-$(this).children('ul').hide();
+  $(this).children('ul').hide();
 })
 
+$('.yelp-info').hide();
 
-
-
-
+$('.email-button').hover(function(){
+  $(this).siblings('.yelp-info').show();
+  // debugger;
+}, function(){
+  $(this).parent().mouseleave(function() {
+    // $('.yelp-info').hide();
+  });
+})
 
 });
 

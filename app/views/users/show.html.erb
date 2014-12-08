@@ -8,12 +8,25 @@
       <div class="col-sm-6 scrollimation fade-left d3">
         <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
         <h2>Located in <%= @neighborhood %></h2> 
+        <h2>Primary language: <%= @user.most_common_language %></h2>
         <% if @user.email %>
-          <% if @user.email.size > 0 %>  
-            <br><h2>Email: <a href=<%= "mailto:#{@user.email}?"%>><%= @user.email %></a></h2>
+          <% if @user.email.size > 0 %> 
+          <div class="get-in-touch-hover">
+          <%#= link_to("Get in touch!", "mailto:#{@user.email}?", class: "btn btn-color2 btn-block") %>
+            <a class="btn btn-color2 btn-block email-button" href=<%= "mailto:#{@user.email}?" %> target="_blank"><i class="fa fa-paper-plane" style="color: white;"></i>Get in Touch
+            </a>
+            <div class='yelp-info btn btn-color2 btn-block'> 
+              <h3>Nearby Cafes with Wifi</h3>
+              <% @wifi_spots.each do |cafe| %>
+                <%= link_to cafe[0], cafe[2] %>
+                <img class="yelp-image" src="<%= cafe[3] %>" alt="" />
+                <br><br>  
+              <% end %>
+            </div>
+          </div>
+
           <% end %>
         <% end %>
-        <h2> Primary language: <%= @user.most_common_language %></h2>
         <br>
       
         <% if current_user && current_user.id == @user.id %>

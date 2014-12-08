@@ -10,9 +10,9 @@ class UsersController < ApplicationController
       coords_array = Geocoder::Calculations.geographic_center(["#{@user.zipcode}", "#{current_user.zipcode}"])
       @coords_hash = {latitude: coords_array[0], longitude: coords_array[1]}
     end
-    search_params = {term: 'wifi', limit: 2, sort: 1}
+    search_params = {term: 'wifi', category_filter: 'coffee', radius_filter: 1609, limit: 2, sort: 2}
     response = YELP.search_by_coordinates(@coords_hash, search_params)
-    @wifi_spots = response.businesses.map {|biz| [biz.name, biz.rating, biz.url]}
+    @wifi_spots = response.businesses.map {|biz| [biz.name, biz.rating, biz.url, biz.image_url]}
   end
 
   def update
