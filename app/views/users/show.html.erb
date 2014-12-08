@@ -1,69 +1,91 @@
-<section id="about" class="add-padding bg-color3">
+<section id="portfolio" class="add-padding">
+
   <div class="container">
     <div class="row">
       <div class="col-sm-6 scrollimation fade-right d1 user-pic">
         <img class="img-responsive polaroid" src="<%= @user.image_path %>" alt="" />
       </div>  
-        <!-- <p><%#= link_to image_tag(@user.image_path), @user.gh_url, class: 'img-responsive polaroid' %></p> -->
       <div class="col-sm-6 scrollimation fade-left d3">
         <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
-
         <h2>Located in <%= @neighborhood %></h2> 
         <% if @user.email %>
           <% if @user.email.size > 0 %>  
-           <br>
-          <h2>Email: <a href=<%= "mailto:#{@user.email}?"%>><%= @user.email %></a></h2>
+            <br><h2>Email: <a href=<%= "mailto:#{@user.email}?"%>><%= @user.email %></a></h2>
           <% end %>
         <% end %>
         <h2> Primary language: <%= @user.most_common_language %></h2>
         <br>
       
         <% if current_user && current_user.id == @user.id %>
-        <h2>Your Projects</h2> 
-        <!-- <p class="proj-hover">Open this project for collaboration</p> -->
-          <% @user.sort_projects_by_push.reverse.each do |project| %>
-        <div class='proj-hover'>  
+          <h2>Your Projects</h2> 
+            <% @user.sort_projects_by_push.reverse.each do |project| %>
+            <div class='proj-hover'>  
             <% if project.recent? %>
               <h3> <%= link_to project.name, project.archive_url %></h3>
-                  <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
-                    <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
-                    <% if project.collaborator_wanted %> 
-                    <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
-                    <% else %>
-                    <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
-                    <% end %>
-                  <% end %>
+              <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+                <%= f.hidden_field :collaborator_wanted, :value => 'toggle' %>
+                <% if project.collaborator_wanted %> 
+                  <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user selected"></i>'.html_safe %> </h3>       
+                <% else %>
+                  <h3 data-id='<%= project.id %>'> <%= f.button '<i class="fa fa-user"></i>'.html_safe %> </h3>
+                <% end %>
+              <% end %>
             <% end %>  
-        </div>  
+            </div>  
           <% end %>
 
         <% else %>
-        <h2><%= @user.first_name %> is looking for collaboration on:</h2>
-     
+          <h2><%= @user.first_name %> is looking for collaboration on:</h2>
           <% @user.sort_projects_by_push.reverse.each do |project| %>
+          
             <% if project.recent? && project.collaborator_wanted %>
-             <div class="project-details">
+              <div class="project-details">
               <h3> <%= link_to project.name, project.archive_url %> </h3>
               <ul>
-             
-              <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
-              <li> The source codes's primary language is <%=project.language%> </li>
-            </ul>
-              </div>
+                <li> Someone last pushed to <%= project.name %> on <%= project.pushed_at.strftime("%A, %B %d, %Y at %l%p") %> </li>
+                <li> The source codes's primary language is <%=project.language%> </li>
+              </ul>
+                </div>
             <% end %>  
           <% end %>
-
         <% end %>  
-    
-
-
-        </div>
-        
-        </div>
-        
       </div>
+    </div>
+  </div>
+  <br><br>
     
-    </section>
+
+<!-- ==============================================
+START PROJECTS ITEM
+=============================================== -->    
+
+  <div class="container masonry-wrapper masonry-images-margin">    
+    <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
+
+    <% @user.all_projects.each do |project| %>
+      <article class= "project-item" style='float:left' >
+        <%= link_to 'http://github.com' do %>
+          <row class='tile-header'>
+          </row>          
+          <img class="project-tile"><!--Project thumb -->
+          <div class="hover-mask">
+            <h2 class="contact-owner"><%= "#{@user.first_name} #{@user.last_name}" %></h2><!--Project Title -->          
+          </div>
+        <% end %>     
+      </article>
+    <% end %>
+    </div>
+  </div>
+
+<!-- ==============================================
+END PROJECT ITEMS
+=============================================== -->
+
+</section>
+
+<!-- ==============================================
+START MAP 
+=============================================== -->
 
 <div id="page-loader" style: "display: none">
   <div class="page-loader-gif"></div>
@@ -85,4 +107,6 @@
     'icon': '/assets/pin-dark.png'
   };  
 </script>
-
+<!-- ==============================================
+END MAP 
+=============================================== -->
