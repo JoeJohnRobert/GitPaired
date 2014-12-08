@@ -1,3 +1,11 @@
+
+<% if @check != nil %>
+
 $('h3[data-id=<%= @project.id %>]').find('.fa').toggleClass('selected');
 
+<% end %>
 
+$('#basicModal-<%= @project.id %>').modal('hide')
+
+$('[data-id=<%= @project.id %>]').siblings('.description').text('<%= @project.description %>')
+$('[data-id=<%= @project.id %>]').siblings('.need_help_with').text('<%= @project.need_help_with %>')
