@@ -370,14 +370,16 @@ img {
   z-index: 1;
 }
 
-.modal {
-  margin-top: 200px;
-}
-
 .modal-dialog {
-
-margin-top: 65vh;
+  margin-top: 65vh;
 } 
+.modal {
+  /*margin-top: 200px;*/
+  margin-top: 0vh;
+  margin-bottom: -25%;
+  height: 395px;
+  width: 395px;
+}
 
 
 

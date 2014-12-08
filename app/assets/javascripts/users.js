@@ -14,8 +14,6 @@ $(document).ready(function() {
 );
 
  
-
-
 var modal = $('.modal[aria-hidden=false]');
 $('.modal-btn').click(function(){
   $(window).scrollTop(800);

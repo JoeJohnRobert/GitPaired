@@ -23,7 +23,6 @@
         <li><%= link_to "ABOUT", about_path()%></li>
         <li><%= link_to "CONTACT", contact_path()%></li>
         <% if logged_in? %>
-          <li><%= link_to "YOUR PROFILE", user_path(current_user) %></li>
           <li><%= link_to 'LOG OUT', logout_path %></li>
           <li>
             <%= link_to(image_tag(current_user.image_path, class: "nav-thumbnail"), user_path(current_user))%>
