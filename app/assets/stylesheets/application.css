@@ -352,8 +352,6 @@ a.close-menu:hover {
   color: #334959;
 }
 
-
-
 img {
   z-index: 1;
 }
@@ -364,6 +362,13 @@ img {
 
 .modal-dialog {
 
-margin-top: 70vh;
+margin-top: 65vh;
 } 
+
+
+
+
+
+
+
 
