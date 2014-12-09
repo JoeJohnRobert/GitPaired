@@ -29,21 +29,18 @@
 }
 
 .yelp-info{
-  height: 345px;
+  height: 332px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
   /*width: 400px;*/
   background-color:grey;
 }
 
-.yelp-image {
+/*.yelp-image {
   height: 100px;
   width: 100px;
   margin-left: 18%;
-}
-
-.yelp-name{
-  /*margin-right: 20%;*/
-}
-
+}*/
 
 .col-sm-6.scrollimation.fade-left.d3.in{
   margin-left: 50px;
@@ -59,12 +56,51 @@
   width: 20%;
 }
           
-          
-          
-          
-          
-          
-          
-          
-          
+.get-in-touch-hover {
+  width: 100%;
+}   
+   
+.yelp-image{
+  width:48%;
+  float:left;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #334959;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.yelp-image:hover{
+  border-color: #52CCBA;
+  opacity:.70;
+  -webkit-transition:all 0.5s ease-out;
+  transition:all 0.5s ease-out;
+}       
+
+.yelp-header{
+  margin-bottom: 16px !important;
+}
+
+.yelp-details{
+  z-index:100;
+  position:absolute;    
+  font-size:20px !important;
+  font-family: Raleway, Arial, sans-serif !important;
+  text-align: left;      
+}            
+
+.yelp-details-header{
+  margin-top: 10px !important;
+  margin-left: 15px;
+  text-align: center;
+  color:white !important;
+}      
+.yelp-details-footer{
+  margin-top: 30px;
+  margin-left: 15px;
+  text-align: center;
+}  
+.display{
+  display:block;
+}    
     

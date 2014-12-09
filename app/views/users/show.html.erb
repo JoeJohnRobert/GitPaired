@@ -6,26 +6,37 @@
         <img class="img-responsive polaroid" src="<%= @user.image_path %>" alt="" />
       </div>  
       <div class="col-sm-6 scrollimation fade-left d3">
-        <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
-        <h2>Located in <%= @neighborhood %></h2> 
-        <h2>Primary language: <%= @user.most_common_language %></h2>
+        <div class='text-center'>
+          <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>'><%= @full_name %></h1>
+          <h2>Located in <%= @neighborhood %></h2> 
+          <h3>Primary language: <%= @user.most_common_language %></h3>
+          <br>
+        </div>
         <% if @user.email %>
           <% if @user.email.size > 0 %> 
           <div class="get-in-touch-hover">
             <a class="btn btn-color2 btn-block email-button" href=<%= "mailto:#{@user.email}?" %> target="_blank"><i class="fa fa-paper-plane" style="color: white;"></i>Get in Touch
             </a>
-            <div class='yelp-info btn btn-color2 btn-block'> 
-              <h3>Nearby Cafes with Wifi</h3>
-              <% @wifi_spots.each do |cafe| %>
-                <div class='align left'>
-                  <%= link_to cafe[0], cafe[2], target: "_blank", class: "yelp-name" %>
+            <% if current_user %>
+              <div class='yelp-info btn btn-color2 btn-block'> 
+                <h4 class='yelp-header'>Nearby Cafes with Wifi</h4>
+                <% @cafe_1 = @wifi_spots[0] %>
+                <% @cafe_2 = @wifi_spots[1] %>
+                <div id='yelp-container'>
+                  <%= link_to @cafe_1[2], :target => "_blank" do %>
+                    <img class="yelp-image" src="<%= @cafe_1[3] %>">                  
+                    <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header'><%= @cafe_1[0] %></h2>
+                    <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer'><%= @cafe_1[1] %> Stars</h2>
+                  <% end %>
                 </div>
-                <div class='align-right'>
-                  <img class="yelp-image" src="<%= cafe[3] %>"  />
-                </div>  
-                <br><br>  
-              <% end %>
-            </div>
+                <div id='yelp-container'>
+                  <%= link_to @cafe_2[2], :target => "_blank" do %>
+                    <img class="yelp-image" src="<%= @cafe_2[3] %>">                  
+                    <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header yelp-mask-header-2'><%= @cafe_2[0] %></h2>
+                    <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer yelp-mask-footer-2'><%= @cafe_2[1] %> Stars</h2>
+                  <% end %>
+                </div>
+            <% end %>
           </div>
 
           <% end %>
@@ -34,7 +45,6 @@
       </div>
     </div>
   </div>
-  <br><br><br>
     
 
 <!-- ==============================================
@@ -46,8 +56,13 @@ START PROJECTS ITEM
 
   <% @user.all_projects.each do |project| %>
     <article class= "project-item" style='float:left' >
-      <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+      <% if @language_logos.include?(project.language.downcase) %>
+        <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+      <% else %>
+        <img class="img-responsive project-image project-language" src='/assets/flatiron.png'>
+      <% end %>
       <%= link_to project.archive_url do %>
+      
         <div class="hover-mask">
           <h2 class="project-title project-tile-header"><%= project.name %></h2><!--Project Title -->
           <div class='project-description'>

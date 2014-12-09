@@ -33,7 +33,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
 }
 
 .big-text{
-    font-size:58px;
+    font-size:50px;
     font-weight:300;
     line-height:62px;
     letter-spacing:0.01em;
@@ -628,6 +628,37 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
     margin-right: auto !important;
     margin-top: 86.5% !important;
 }
+.yelp-mask-header {
+    width: 255px !important;
+    bottom: 0px !important;
+    background: #334959 !important;
+    height: 4.5% !important;
+    margin-bottom: 263px !important;
+    margin-left: 8px !important;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
+}
+
+.yelp-mask-header-2{
+    margin-left: 279px !important;
+}
+
+.yelp-mask-footer {
+    width: 255px !important;
+    bottom: 0px !important;
+    background: #334959 !important;
+    height: 4.5% !important;
+    margin-bottom: 37px !important;
+    margin-left: 8px !important;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
+}
+
+.yelp-mask-footer-2{
+    margin-left: 279px !important;
+}
 
 .bottom-mask:hover {
     opacity:1;
@@ -635,6 +666,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
     border-width:3px;
     border-color:#FFF;
 }
+
 
 .project-item:hover .hover-mask {
     opacity: .95;
