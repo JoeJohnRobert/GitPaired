@@ -13,12 +13,13 @@ class SessionsController < ApplicationController
   def destroy
     # reset_session
     session[:user_id] = nil
-    redirect_to session[:origin_path]
+    # redirect_to session[:origin_path]
+    redirect_to root_path
   end
 
 
   private
     def set_origin_path
-      session[:origin_path] = request.path
+      # session[:origin_path] = request.path
     end
 end
