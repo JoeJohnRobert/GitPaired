@@ -6,13 +6,16 @@
         <img class="img-responsive polaroid" src="<%= @user.image_path %>" alt="" />
       </div>  
       <div class="col-sm-6 scrollimation fade-left d3">
-        <% if current_user %>
-          <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>' data-user='<%= @user.first_name %> <%= @user.last_name %>' data-zip='<%= @user.zipcode %>' data-currlat='<%= @curr_user.latitude %>' data-currlng='<%= @curr_user.longitude %>'><%= @full_name %></h1>
-        <% else %>
-          <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>' data-user='<%= @user.first_name %> <%= @user.last_name %>' data-zip='<%= @user.zipcode %>'><%= @full_name %></h1>        
-        <% end %>  
-        <h2>Located in <%= @neighborhood %></h2> 
-        <h2>Primary language: <%= @user.most_common_language %></h2>
+        <br>
+        <div class='text-center'>
+          <% if current_user %>
+            <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>' data-user='<%= @user.first_name %> <%= @user.last_name %>' data-zip='<%= @user.zipcode %>' data-currlat='<%= @curr_user.latitude %>' data-currlng='<%= @curr_user.longitude %>'><%= @full_name %></h1>
+          <% else %>
+            <h1 class='big-text' data-latitude='<%= @user.latitude %>' data-longitude='<%= @user.longitude %>' data-user='<%= @user.first_name %> <%= @user.last_name %>' data-zip='<%= @user.zipcode %>'><%= @full_name %></h1>        
+          <% end %>  
+        <h3>Located in <%= @neighborhood %></h3> 
+        <h3>Primary language: <%= @user.most_common_language %></h3>
+        </div>
 
         <% if @user.email %>
           <% if @user.email.size > 0 %> 
@@ -109,7 +112,7 @@ START PROJECTS ITEM
       <% if current_user && current_user == @user %>
         
         <a href="#" data-toggle="modal" data-target="#basicModal-<%= project.id %>" >
-          <div class="hover-mask bottom-mask">
+          <div class="hover-mask bottom-mask mask-orange">
             <h2 class='project-title project-description-footer'>Edit</h2>
           </div>
         </a>

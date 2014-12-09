@@ -33,10 +33,10 @@ $(document).ready(function() {
 
 
   $('.email-button').hover(function(){
-    $(this).siblings('.yelp-info').show();
+    $(this).siblings('.yelp-info').slideDown(300);
   }, function(){
     $(this).parent().mouseleave(function() {
-      $('.yelp-info').hide();
+      $('.yelp-info').slideUp();
     });
   })
 
