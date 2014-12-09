@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
 
-# FOR OMNIAUTH
+#  FOR OMNIAUTH
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
   end
