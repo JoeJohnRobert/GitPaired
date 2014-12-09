@@ -91,7 +91,7 @@ START PROJECTS ITEM
 
   <% @user.all_projects.each do |project| %>
 
-    <article class= "project-item" style='float:left' >
+    <article class= "project-item" style='float:left' data-id="<%= project.id %>" >
       <% if @language_logos.include?(project.language.downcase) %>
         <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
       <% else %>
