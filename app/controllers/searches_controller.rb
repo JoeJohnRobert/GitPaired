@@ -1,10 +1,10 @@
 class SearchesController < ApplicationController 
 
   def index
+    @query = params[:query]
     if !@query 
       @users = User.all 
     else
-      @query = params[:query]
       @radius = 100 #measured in miles
       @users = User.select_nearby_users(current_user, @query, @radius)
     end

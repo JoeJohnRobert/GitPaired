@@ -44,7 +44,7 @@ START PROJECTS ITEM
               <img class="img-responsive project-image" src="<%= user.image_path %>"><!--Project thumb -->
               <div class="hover-mask">
                   <h2 class="project-title"><%= "#{user.first_name} #{user.last_name}" %></h2><!--Project Title -->          
-                  <% if @query %>
+                  <% if params[:query] %>
                     <p class='distance-descriptor'>(~<%= user.proximity.round(1) %> miles)</p><!--Project Subtitle -->
                   <% end %>
               </div>
