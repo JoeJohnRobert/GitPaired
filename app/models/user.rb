@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :tags, through: :projects
   geocoded_by :zipcode
   after_validation :geocode
-  validates :zipcode, numericality: true
-  validates :zipcode, length: { is: 5 }
+  # validates :zipcode, numericality: true
+  # validates :zipcode, length: { is: 5 }
   attr_reader :proximity
 
 # FOR GEOCODER
@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
 
   def create_or_update_projects(repos)
     repos.each do |repo|
-      binding.pry
       unless self.projects.find_by(:name => repo[:name])
         self.projects.create(:name => repo[:name])
       end
