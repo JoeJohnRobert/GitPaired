@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_user = current_user
     @full_name = @user.first_name + " " + @user.last_name
-    @language_logos = ['c++','c','css','html','java','javascript','php','python','ruby','sql']
+    @language_logos = ['c++','c','css','html','javascript','php','python','ruby','sql']
     if @user.zipcode
       @neighborhood = @user.get_neighborhood
     end
