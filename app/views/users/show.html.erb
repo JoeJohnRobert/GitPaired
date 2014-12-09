@@ -16,7 +16,24 @@
         <h3>Located in <%= @neighborhood %></h3> 
         <h3>Primary language: <%= @user.most_common_language %></h3>
         </div>
+<% if current_user && current_user == @user %>
+<% if @user.email %>
+          <% if @user.email.size > 0 %> 
+          <div class="get-in-touch-hover">
+     
+            <% if current_user %>
+              <div class='yelp-info btn btn-color2 btn-block'> 
+                
+                </div>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+        <br>
 
+  </div>
+
+<%else%>
         <% if @user.email %>
           <% if @user.email.size > 0 %> 
           <div class="get-in-touch-hover">
@@ -49,7 +66,7 @@
       </div>
     </div>
   </div>
-
+<%end%>
 <!-- ////////////MODAL/////// -->
 
   <div class="modal-show">
