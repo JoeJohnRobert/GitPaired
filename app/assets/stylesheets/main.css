@@ -340,9 +340,14 @@ img {
   max-width: 100%;
   min-width: 100%;
 }
+
 .project-language {
-  opacity: .75;
+  opacity: .40;
 }
+.project-language.collaborator-wanted {
+  opacity: .80;
+}
+
 
 .img-rounded {
   border-radius: 6px;

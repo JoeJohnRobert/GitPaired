@@ -112,10 +112,26 @@ START PROJECTS ITEM
   <% @user.all_projects.each do |project| %>
 
     <article class= "project-item" style='float:left' data-id="<%= project.id %>" >
-      <% if @language_logos.include?(project.language.downcase) %>
-        <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+      <% if project.collaborator_wanted %>
+        <center><h2 class='project-tile-name collaborator_wanted'><%= project.name %></h2></center>
+        <center><h2 class='project-tile-status collaborator_wanted'>HELP WANTED</h2></center>
       <% else %>
-        <img class="img-responsive project-image project-language" src='/assets/flatiron.png'>
+        <center><h2 class='project-tile-name'><%= project.name %></h2></center>
+        <center><h2 class='project-tile-status'>PRIVATE</h2></center>
+      <% end %>
+      <% if @language_logos.include?(project.language.downcase) %>
+        <% if project.collaborator_wanted %>
+          <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/<%= project.language.downcase %>.png'>
+        <% else %>
+          <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
+        <% end %>
+      <% else %>
+        <% if project.collaborator_wanted %>
+          <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/flatiron.png'>
+        <% else %>
+          <img class="img-responsive project-image project-language" src='/assets/flatiron.png'>
+        <% end %>
+        
       <% end %>
       <%= link_to project.archive_url do %>
       
