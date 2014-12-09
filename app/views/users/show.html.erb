@@ -16,24 +16,21 @@
         <h3>Located in <%= @neighborhood %></h3> 
         <h3>Primary language: <%= @user.most_common_language %></h3>
         </div>
-<% if current_user && current_user == @user %>
-<% if @user.email %>
-          <% if @user.email.size > 0 %> 
-          <div class="get-in-touch-hover">
-     
+        <% if current_user && current_user == @user %>
+          <% if @user.email %>
+            <% if @user.email.size > 0 %> 
+              <div class="get-in-touch-hover">
             <% if current_user %>
               <div class='yelp-info btn btn-color2 btn-block'> 
-                
-                </div>
+              </div>
             <% end %>
-          </div>
+              </div>
           <% end %>
         <% end %>
-        <br>
+          <br>
+      </div>
 
-  </div>
-
-<%else%>
+       <%else%>
         <% if @user.email %>
           <% if @user.email.size > 0 %> 
           <div class="get-in-touch-hover">
@@ -68,7 +65,13 @@
   </div>
 <%end%>
 <!-- ////////////MODAL/////// -->
-
+  <center>
+    <% if current_user == @user %>
+      <h1 style='padding-bottom:10px'>>Your Projects</h1>
+    <% else %>
+      <h1 style='padding-bottom:10px'><%= @user.first_name %>'s Projects</h1>
+    <% end %>
+  </center>
   <div class="modal-show">
      <% @user.all_projects.each do |project| %>
     <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
