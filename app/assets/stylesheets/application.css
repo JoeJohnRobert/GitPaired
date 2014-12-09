@@ -373,15 +373,20 @@ img {
 .modal-dialog {
   margin-top: 65vh;
 } 
-.modal {
-  /*margin-top: 200px;*/
-  margin-top: 0vh;
-  margin-bottom: -25%;
-  height: 395px;
-  width: 395px;
+
+
+.modal-dialog {
+position:absolute;
+top:50%;
+left:50%;
+overflow:auto;
+width:400px;
+height:auto;
+margin-left:-200px;
+margin-top:-200px;
+padding: 10px;
+color: #000;
 }
-
-
 
 
 

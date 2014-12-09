@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @curr_user = current_user
     @full_name = @user.first_name + " " + @user.last_name
     @language_logos = ['c++','c','css','html','java','javascript','php','python','ruby','sql']
     if @user.zipcode
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # raise params.inspect
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to root_path
