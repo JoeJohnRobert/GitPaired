@@ -342,10 +342,10 @@ img {
 }
 
 .project-language {
-  opacity: .40;
+  opacity: .25;
 }
 .project-language.collaborator-wanted {
-  opacity: .80;
+  opacity: 1;
 }
 
 

@@ -117,7 +117,7 @@ START PROJECTS ITEM
         <center><h2 class='project-tile-status collaborator_wanted'>HELP WANTED</h2></center>
       <% else %>
         <center><h2 class='project-tile-name'><%= project.name %></h2></center>
-        <center><h2 class='project-tile-status'>PRIVATE</h2></center>
+        <center><h2 class='project-tile-status'></h2></center>
       <% end %>
       <% if @language_logos.include?(project.language.downcase) %>
         <% if project.collaborator_wanted %>

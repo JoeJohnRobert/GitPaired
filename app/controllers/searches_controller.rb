@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     if !@query 
       @users = User.all 
     else
-      @radius = 100 #measured in miles
+      @radius = 20 #measured in miles
       @users = User.select_nearby_users(current_user, @query, @radius)
     end
 
