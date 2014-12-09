@@ -35,10 +35,10 @@
 
 <%else%>
         <% if @user.email %>
-          <% if @user.email.size > 0 %> 
-          <div class="get-in-touch-hover">
-            <a class="btn btn-color2 btn-block email-button" href=<%= "mailto:#{@user.email}?" %> target="_blank"><i class="fa fa-paper-plane" style="color: white;"></i>Get in Touch
-            </a>
+          <%# if @user.email.size > 0 %> 
+          <!-- <div class="get-in-touch-hover">
+            <a class="btn btn-color2 btn-block email-button" href=<%#= "mailto:#{@user.email}?" %> target="_blank"><i class="fa fa-paper-plane" style="color: white;"></i>Get in Touch
+            </a> -->
             <% if current_user %>
               <div class='yelp-info btn btn-color2 btn-block'> 
                 <h4 class='yelp-header'>Nearby Cafes with Wifi</h4>
@@ -60,7 +60,7 @@
                 </div>
             <% end %>
           </div>
-          <% end %>
+          <%# end %>
         <% end %>
         <br>
       </div>
