@@ -160,9 +160,12 @@ START MAP
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
-    // var rendererOptions = {
-    //   suppressMarkers: true
-    // }
+    var rendererOptions = {
+      suppressMarkers: true,
+      polylineOptions: {
+        strokeColor: "#F5B133"
+      }
+    };
     // var mapPoint = {
     //     'lat': lat,
     //     'lng': lng,
@@ -174,7 +177,7 @@ START MAP
     //   };
 
     function initialize(lat, lng) {
-      directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
       var current_location = new google.maps.LatLng(lat, lng);
       var mapOptions = {
         zoom:15,
@@ -192,7 +195,7 @@ START MAP
       var request = {
           origin:      origin,
           destination: destination,
-          travelMode:  google.maps.TravelMode.DRIVING
+          travelMode:  google.maps.TravelMode.TRANSIT
       };
       directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
