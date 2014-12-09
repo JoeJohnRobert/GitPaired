@@ -112,6 +112,43 @@ START PROJECTS ITEM
   <% @user.all_projects.each do |project| %>
 
     <!-- THIS IS WHERE THE ARTICLE ONCE WAS - rip -->
+    <article class= "project-item" style='float:left' data-id="<%= project.id %>" >
+      <h2 class='project-tile-name collaborator_wanted'><%= project.name %></h2>
+      <h2 class='project-tile-status collaborator_wanted'>HELP WANTED</h2>
+      <% if @language_logos.include?(project.language.downcase) %>
+        <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/<%= project.language.downcase %>.png'>
+      <% else %>
+        <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/flatiron.png'>
+      <% end %>
+      <%= link_to project.archive_url do %>
+  
+    <div class="hover-mask">
+      <h2 class="project-title project-tile-header"><%= project.name %></h2><!--Project Title -->
+      <div class='project-description'>
+        <p class='overview'><%=project.description%> </p>
+        <h2 class='project-title project-description-header'>Written In:</h2>
+          <p class='project-languages'> <%=project.language %> </p>
+        <h2 class='project-title project-description-header'>Need Help With:</h2>
+          <p class='need-help'><%=project.need_help_with%> </p>
+      </div>
+    </div>
+  <% end %>
+  <% if current_user && current_user == @user %>
+    
+    <a href="#" data-toggle="modal" data-target="#basicModal-<%= project.id %>" >
+      <div class="hover-mask bottom-mask mask-orange">
+        <h2 class='project-title project-description-footer'>Edit</h2>
+      </div>
+    </a>
+  <% else %>
+    <a href="mailto:<%= @user.email %>?subject=Helping Out With <%= project.name %>">
+    <div class="hover-mask bottom-mask">
+      <h2 class='project-title project-description-footer'>Get In Touch!</h2>
+    </div>
+    </a>
+  <% end %>
+  </article>
+
 
   <% end %>
   </div>
