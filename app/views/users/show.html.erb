@@ -66,8 +66,9 @@
                     Please give a brief decription of your project below:
                     <%= f.text_field :description, class: 'form-control' %>Describe what your looking for in a collaborator on this project:
                     <%= f.text_field :need_help_with, class: 'form-control' %>
+                    <%#= collection_select(:user, :role_id, @roles, :id, :role_title, {:prompt => true}) %>
                     <%= check_box_tag(:collaborator_wanted, true)%>
-                    Check box if you want to advertise the project as open to other members!
+                    Open to collaboration!
                     <span class="help-block"></span>
                 </div>
               </div>
