@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # raise params.inspect
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to root_path
