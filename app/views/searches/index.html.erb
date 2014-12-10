@@ -39,7 +39,7 @@ START PROJECTS ITEM
     <div id="projects-container" class="masonry" style="visibility: visible; position: relative;  width: 100%">
 
       <% @users.each do |user| %>
-          <article class= "project-item <%= user.add_languages %> masonry-brick" style='float:left' >
+          <article class= "project-item user-image <%= user.add_languages %> masonry-brick" style='float:left' >
             <%= link_to user_path(user) do %>          
               <img class="img-responsive project-image" src="<%= user.image_path %>"><!--Project thumb -->
               <div class="hover-mask">
