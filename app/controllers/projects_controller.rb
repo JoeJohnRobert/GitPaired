@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     @user = User.find(session[:user_id])
     @project = Project.find(params[:id])
     @project.update(project_params)
-    @project.update(collaborator_wanted: params[:collaborator_wanted]) #collab wanted not on the same hash level
+    @project.update(collaborator_wanted: params[:collaborator_wanted]) #collab wanted not on the same hash level of params
   end
 
   private
