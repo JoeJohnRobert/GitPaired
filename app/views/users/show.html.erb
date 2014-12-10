@@ -67,7 +67,7 @@
 <!-- ////////////MODAL/////// -->
   <center>
     <% if current_user == @user %>
-      <center><h1 style='padding-bottom:10px'>Your Projects</h1></center>
+      <h1 style='padding-bottom:10px'>Your Projects</h1>
     <% else %>
       <h1 style='padding-bottom:10px'><%= @user.first_name %>'s Projects</h1>
     <% end %>
@@ -75,32 +75,32 @@
   <div class="modal-show">
      <% @user.all_projects.each do |project| %>
     <div class="modal fade" id="basicModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel"><%= project.name %></h4>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
-                    Please give a brief decription of your project below:
-                    <%= f.text_field :description, class: 'form-control' %>Describe what your looking for in a collaborator on this project:
-                    <%= f.text_field :need_help_with, class: 'form-control' %>
-                    <%= check_box_tag(:collaborator_wanted, true)%>
-                    Open to collaboration!
-                    <span class="help-block"></span>
-                </div>
-              </div>
-              <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <%= f.submit "Save Changes", class: "btn btn-success"  %>
-              </div>
-                  <%end%>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel"><%= project.name %></h4>
             </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <%= form_for project, url: user_project_path(@user.id, project.id), remote: true do |f| %>
+                  Please give a brief decription of your project below:
+                  <%= f.text_field :description, class: 'form-control' %>Describe what your looking for in a collaborator on this project:
+                  <%= f.text_field :need_help_with, class: 'form-control' %>
+                  <%= check_box_tag(:collaborator_wanted, true)%>
+                  Open to collaboration!
+                  <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= f.submit "Save Changes", class: "btn btn-success"  %>
+            </div>
+                <%end%>
           </div>
         </div>
-        <%end%>
       </div>
+      <%end%>
+    </div>
 <!-- ==============================================
 START PROJECTS ITEM
 =============================================== -->    
