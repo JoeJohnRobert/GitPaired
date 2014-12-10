@@ -12,6 +12,7 @@ class SearchesController < ApplicationController
     if @users.size > 0
       @projects = (@users.collect {|u| u.all_projects}).flatten
     end
+
     if @projects
       @language_filters = (@projects.map {|p| p.language}).uniq
     else
