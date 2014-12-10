@@ -42,18 +42,22 @@
                 <% @cafe_1 = @wifi_spots[0] %>
                 <% @cafe_2 = @wifi_spots[1] %>
                 <div id='yelp-container'>
-                  <%= link_to @cafe_1[2], :target => "_blank" do %>
-                    <img class="yelp-image" src="<%= @cafe_1[3] %>">                  
-                    <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header'><%= @cafe_1[0] %></h2>
-                    <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer'><%= @cafe_1[1] %> Stars</h2>
-                  <% end %>
+                  <% if @cafe_2 %>  
+                    <%= link_to @cafe_1[2], :target => "_blank" do %>
+                      <img class="yelp-image" src="<%= @cafe_1[3] %>">                  
+                      <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header'><%= @cafe_1[0] %></h2>
+                      <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer'><%= @cafe_1[1] %> Stars</h2>
+                    <% end %>
+                  <% end %>  
                 </div>
                 <div id='yelp-container'>
-                  <%= link_to @cafe_2[2], :target => "_blank" do %>
-                    <img class="yelp-image" src="<%= @cafe_2[3] %>">                  
-                    <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header yelp-mask-header-2'><%= @cafe_2[0] %></h2>
-                    <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer yelp-mask-footer-2'><%= @cafe_2[1] %> Stars</h2>
-                  <% end %>
+                  <% if @cafe_2 %>
+                    <%= link_to @cafe_2[2], :target => "_blank" do %>
+                      <img class="yelp-image" src="<%= @cafe_2[3] %>">                  
+                      <h2 class='hover-mask yelp-mask-header project-title project-description-footer yelp-details yelp-details-header yelp-mask-header-2'><%= @cafe_2[0] %></h2>
+                      <h2 class='hover-mask yelp-mask-footer project-title project-description-footer yelp-details yelp-details-footer yelp-mask-footer-2'><%= @cafe_2[1] %> Stars</h2>
+                    <% end %>
+                  <% end %>  
                 </div>
             <% end %>
           </div>
