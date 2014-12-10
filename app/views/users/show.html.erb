@@ -100,9 +100,9 @@
                   <span class="help-block"></span>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" data-id='<%= project.id %>' >
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <%= f.submit "Save Changes", class: "btn btn-success"  %>
+                  <%= f.submit "Save Changes", class: "btn btn-success" %>
             </div>
                 <%end%>
           </div>
@@ -123,10 +123,10 @@ START PROJECTS ITEM
 
     <% if project.collaborator_wanted %>
       <center class='project-tile-name collaborator_wanted'><h2 class='no-margin'><%= project.name %></h2></center>
-      <center class='project-tile-status collaborator_wanted'><h2 class='no-margin'>HELP WANTED</h2></center>
+      <center class='project-tile-status collaborator_wanted'><h3 class='no-margin'>HELP WANTED</h3></center>
     <% else %>
       <center class='project-tile-name'><h2 class='no-margin'><%= project.name %></h2></center>
-      <center class='project-tile-status'><h2 class='no-margin'></h2></center>
+      <center class='project-tile-status'><h3 class='no-margin'></h3></center>
     <% end %>
     
     <% if @language_logos.include?(project.language.downcase) %>
