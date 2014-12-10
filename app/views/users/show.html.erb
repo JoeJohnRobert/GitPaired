@@ -91,8 +91,12 @@
                   Please give a brief decription of your project below:
                   <%= f.text_field :description, class: 'form-control' %>Describe what your looking for in a collaborator on this project:
                   <%= f.text_field :need_help_with, class: 'form-control' %>
-                  <%= check_box_tag(:collaborator_wanted, 'toggle')%>
-                  Open/close to collaboration!
+                    <%= check_box_tag(:collaborator_wanted, 'toggle')%>
+                  <% if project.collaborator_wanted %>
+                    No collaborators needed.
+                  <% else %>
+                    I need collaborators!
+                  <% end %>  
                   <span class="help-block"></span>
               </div>
             </div>
