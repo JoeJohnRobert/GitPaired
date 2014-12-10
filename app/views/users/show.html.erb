@@ -122,21 +122,7 @@ START PROJECTS ITEM
     <% end %>
     <!-- SECTION 1 END -->
 
-    <!-- SECTION 2 START -->
-    <% if @language_filters.include?(project.language.downcase) %>
-      <% if project.collaborator_wanted %>
-        <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/<%= project.language.downcase %>.png'>
-      <% else %>
-        <img class="img-responsive project-image project-language" src='/assets/<%= project.language.downcase %>.png'>
-      <% end %>
-    <% else %>
-      <% if project.collaborator_wanted %>
-        <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/flatiron.png'>
-      <% else %>
-        <img class="img-responsive project-image project-language" src='/assets/flatiron.png'>
-      <% end %>
-    <% end %>
-    <!-- SECTION 2 END -->
+   
 
 
     <%= link_to project.archive_url do %>
