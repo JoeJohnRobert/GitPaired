@@ -66,6 +66,7 @@ $(document).ready(function() {
     } else {
       $($('.project-item[data-id='+proj_id+']').children()[1]).text('Help Wanted');
     }
+    $($($('.project-item[data-id='+proj_id+']').children()[0]).siblings()[1]).toggleClass('collaborator-wanted');
     
 
   })
