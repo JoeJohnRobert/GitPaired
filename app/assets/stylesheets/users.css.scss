@@ -107,27 +107,29 @@
 
 .project-tile-name {
   text-transform: uppercase;
-  height: 34px;
-  margin: 0px;
+  height: 37px; 
   background: #000;
   padding-top: 10px;
+  width: 365px;
   color: #AAAAAA;
+}
+.no-margin{
+  margin-top:0px !important;
 }
 
 .project-tile-status {
   text-transform: uppercase;
   height: 27px;
   font-size: 20px;
-  margin-top: 0px;
   background: #000;
-  padding-top: 6px;
-  margin-bottom: 0px !important;
+  width: 365px;
+  padding-top: 3px;
+  margin-bottom: 0px !important;;
 }
 
 .collaborator_wanted{
   background: #52CCBA;
   color: #FFF;
 }
-
 
     
