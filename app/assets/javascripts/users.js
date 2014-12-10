@@ -5,13 +5,13 @@
 $(document).ready(function() {
 
   $('.project-item').hover(function(){
-    this.children[0].children[0].style.visibility = 'hidden';
-    this.children[1].children[0].style.visibility = 'hidden';
+    // this.children[0].children[0].style.visibility = 'hidden';
+    // this.children[1].children[0].style.visibility = 'hidden';
   });
 
   $('.project-item').mouseleave(function(){
-    this.children[0].children[0].style.visibility = 'visible';
-    this.children[1].children[0].style.visibility = 'visible';
+    // this.children[0].children[0].style.visibility = 'visible';
+    // this.children[1].children[0].style.visibility = 'visible';
   });
   
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
     }
   );
 
-  $('.btn-success').on('click', function(){
+  $('.btn-success').on('click' function(){
     var proj_id = $(this).parent().data('id');
     $($('.project-item[data-id='+proj_id+']').children()[0]).toggleClass('collaborator_wanted');
     $($('.project-item[data-id='+proj_id+']').children()[1]).toggleClass('collaborator_wanted');
