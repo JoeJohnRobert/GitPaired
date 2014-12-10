@@ -112,7 +112,7 @@ START PROJECTS ITEM
 
     <article class= "project-item" style='float:left' data-id="<%= project.id %>" >
 
-
+    <!-- SECTION 1 START -->
     <% if project.collaborator_wanted %>
       <h2 class='project-tile-name collaborator_wanted'><%= project.name %></h2>
       <h2 class='project-tile-status collaborator_wanted'>HELP WANTED</h2>
@@ -120,7 +120,9 @@ START PROJECTS ITEM
       <h2 class='project-tile-name'><%= project.name %></h2>
       <h2 class='project-tile-status'></h2>
     <% end %>
+    <!-- SECTION 1 END -->
 
+    <!-- SECTION 2 START -->
     <% if @language_filters.include?(project.language.downcase) %>
       <% if project.collaborator_wanted %>
         <img class="img-responsive project-image project-language collaborator-wanted" src='/assets/<%= project.language.downcase %>.png'>
@@ -134,6 +136,7 @@ START PROJECTS ITEM
         <img class="img-responsive project-image project-language" src='/assets/flatiron.png'>
       <% end %>
     <% end %>
+    <!-- SECTION 2 END -->
 
 
     <%= link_to project.archive_url do %>
