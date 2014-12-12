@@ -156,21 +156,31 @@ START PROJECTS ITEM
         </div>
       </div>
     <% end %>
-    <% if current_user && current_user == @user %>
-      
+    <!-- ORIGINAL TO PUT BACK BELOW -->
+    <%# if current_user && current_user == @user %>      
+      <!-- <a href="#" data-toggle="modal" data-target="#basicModal-<%#= project.id %>" >
+        <div class="hover-mask bottom-mask mask-orange">
+          <h2 class='project-title project-description-footer'>Edit</h2>
+        </div>
+      </a> -->
+    <%# else %>
+     <!--  <a href="mailto:<%#= @user.email %>?subject=Helping Out With <%#= project.name %>">
+      <%#= link_to "mailto:#{@user.email}?" do %>
+        <div class="hover-mask bottom-mask">
+          <h2 class='project-title project-description-footer'>Get In Touch!</h2>
+        </div>
+      </a> -->
+    <%# end %>
+    <!-- ORIGINAL TO PUT BACK ABOVE -->
+    
+    <!-- FOR TESTING -->
       <a href="#" data-toggle="modal" data-target="#basicModal-<%= project.id %>" >
         <div class="hover-mask bottom-mask mask-orange">
           <h2 class='project-title project-description-footer'>Edit</h2>
         </div>
       </a>
-    <% else %>
-      <a href="mailto:<%= @user.email %>?subject=Helping Out With <%= project.name %>">
-      <%#= link_to "mailto:#{@user.email}?" do %>
-        <div class="hover-mask bottom-mask">
-          <h2 class='project-title project-description-footer'>Get In Touch!</h2>
-        </div>
-      </a>
-    <% end %>
+    <!-- FOR TESTING -->
+
   </div>
 
 

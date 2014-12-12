@@ -5,13 +5,12 @@
 $(document).ready(function() {
 
   $('.project-item').hover(function(){
-    // this.children[0].children[0].style.visibility = 'hidden';
-    // this.children[1].children[0].style.visibility = 'hidden';
+    this.children[0].children[0].style.visibility = 'hidden';
+    this.children[1].children[0].style.visibility = 'hidden';
   });
-
   $('.project-item').mouseleave(function(){
-    // this.children[0].children[0].style.visibility = 'visible';
-    // this.children[1].children[0].style.visibility = 'visible';
+    this.children[0].children[0].style.visibility = 'visible';
+    this.children[1].children[0].style.visibility = 'visible';
   });
   
 
@@ -66,10 +65,23 @@ $(document).ready(function() {
     } else {
       $($('.project-item[data-id='+proj_id+']').children()[1]).text('Help Wanted');
     }
-    $($($('.project-item[data-id='+proj_id+']').children()[0]).siblings()[1]).toggleClass('collaborator-wanted');
-    
+    $('.project-item').mouseleave(function(){
+      this.children[0].children[0].style.visibility = 'visible';
+      this.children[1].children[0].style.visibility = 'visible';
+    });
+  });
 
-  })
+
+  $('.project-item').hover(function(){
+    this.children[0].children[0].style.visibility = 'hidden';
+    this.children[1].children[0].style.visibility = 'hidden';
+    };
+  });
+  $('.project-item').mouseleave(function(){
+    this.children[0].children[0].style.visibility = 'visible';
+    this.children[1].children[0].style.visibility = 'visible';
+    };
+  });
     
 
 });
