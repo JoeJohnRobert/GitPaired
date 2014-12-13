@@ -59,17 +59,18 @@ $(document).ready(function() {
 
   $('.btn-success').on('click', function(){
     var proj_id = $(this).parent().data('id');
-    $($('.project-item[data-id='+proj_id+']').children()[0]).toggleClass('collaborator_wanted');
-    $($('.project-item[data-id='+proj_id+']').children()[1]).toggleClass('collaborator_wanted');
-    if ( $($('.project-item[data-id='+proj_id+']').children()[1]).text() ){
-      $($('.project-item[data-id='+proj_id+']').children()[1]).text('');
-    } else {
+    if ( $('#collaborator_wanted[data-id='+proj_id+']').is(':checked') ){
+      $($('.project-item[data-id='+proj_id+']').children()[0]).addClass('collaborator_wanted');
+      $($('.project-item[data-id='+proj_id+']').children()[1]).addClass('collaborator_wanted');
       $($('.project-item[data-id='+proj_id+']').children()[1]).text('Help Wanted');
-    }
-    $($($('.project-item[data-id='+proj_id+']').children()[0]).siblings()[1]).toggleClass('collaborator-wanted');
-    
-
-  })
+      $($($('.project-item[data-id='+proj_id+']').children()[0]).siblings()[1]).addClass('collaborator-wanted');
+    } else {
+      $($('.project-item[data-id='+proj_id+']').children()[0]).removeClass('collaborator_wanted');
+      $($('.project-item[data-id='+proj_id+']').children()[1]).removeClass('collaborator_wanted');
+      $($($('.project-item[data-id='+proj_id+']').children()[0]).siblings()[1]).removeClass('collaborator-wanted');
+      $($('.project-item[data-id='+proj_id+']').children()[1]).text('');
+    }  
+  }) 
     
 
 });
